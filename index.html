@@ -4,22 +4,64 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>JUST REPAIR | India's #1 Trusted Service</title>
+    <meta name="description" content="Expert Home Appliance Repair Service in Jaipur. AC, Fridge, Washing Machine Repair. Call +91 70148-83773.">
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    
+    <!-- Local Business Schema (CRITICAL for GMB & SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "JUST REPAIR",
+      "image": "assets/hero/hero-section.png",
+      "telephone": "+917014883773",
+      "email": "support@justrepair.in",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Plot No. 90, Shivaji Nagar, Boring Road",
+        "addressLocality": "Jhotwara, Jaipur",
+        "postalCode": "302012",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 26.9124,
+        "longitude": 75.7873
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "21:00"
+      },
+      "priceRange": "₹₹"
+    }
+    </script>
+
     <script>
       tailwind.config = {
         darkMode: "class",
         theme: {
           extend: {
             colors: {
-              primary: "#000000", 
+              primary: "#0f172a", 
               accent: "#2563eb", // Royal Blue
+              secondary: "#3b82f6", // Lighter Blue
               "off-white": "#f8fafc",
-              "deep-black": "#09090b",
-              "zinc-850": "#27272a",
+              "deep-blue": "#1e3a8a",
+              "slate-850": "#1e293b",
             },
             fontFamily: {
               display: ["Space Grotesk", "sans-serif"],
@@ -31,6 +73,7 @@
             animation: {
                 'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
                 'float': 'float 6s ease-in-out infinite',
+                'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             },
             keyframes: {
                 fadeInUp: {
@@ -48,41 +91,37 @@
     </script>
     <style>
         .glass-dark {
-            background: rgba(20, 20, 20, 0.7);
+            background: rgba(15, 23, 42, 0.8); /* Slate tint */
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .glass-light {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.1); /* Blue tint border */
         }
         .hero-pattern {
-            background-color: #000000;
-            background-image: radial-gradient(#333 1px, transparent 1px);
+            background-color: #0f172a; /* Slate 900 */
+            background-image: radial-gradient(#334155 1px, transparent 1px);
             background-size: 30px 30px;
         }
-        .text-glow {
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-        }
-        .image-cover {
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-        }
-        /* Hide scrollbar for neatness */
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
         ::-webkit-scrollbar-track {
-            background: #18181b; 
+            background: #f1f5f9; 
         }
         ::-webkit-scrollbar-thumb {
-            background: #52525b; 
-            border-radius: 4px;
+            background: #94a3b8; 
+            border-radius: 5px;
         }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b; 
+        }
+        
         /* Modal Styles */
         .modal {
             opacity: 0;
@@ -93,76 +132,87 @@
             opacity: 1;
             visibility: visible;
         }
+        
         /* Ripple Animation */
-        @keyframes ripple-green {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
         @keyframes ripple-blue {
             0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
             70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
             100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
         }
-        .animate-ripple-green {
-            animation: ripple-green 2s infinite;
-        }
         .animate-ripple-blue {
             animation: ripple-blue 2s infinite;
         }
+
+        /* Location Card Animation */
+        @keyframes location-pulse {
+            0%, 100% { border-color: #e2e8f0; transform: scale(1); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); }
+            50% { border-color: #3b82f6; transform: scale(1.02); box-shadow: 0 4px 6px -1px rgb(59 130 246 / 0.3); }
+        }
+        .location-card-anim {
+            animation: location-pulse 3s infinite;
+        }
+        /* Staggered animation delays */
+        .location-card-anim:nth-child(1) { animation-delay: 0s; }
+        .location-card-anim:nth-child(2) { animation-delay: 0.2s; }
+        .location-card-anim:nth-child(3) { animation-delay: 0.4s; }
+        .location-card-anim:nth-child(4) { animation-delay: 0.6s; }
+        .location-card-anim:nth-child(5) { animation-delay: 0.8s; }
+        .location-card-anim:nth-child(6) { animation-delay: 1.0s; }
+        .location-card-anim:nth-child(7) { animation-delay: 1.2s; }
+        .location-card-anim:nth-child(8) { animation-delay: 1.4s; }
+        .location-card-anim:nth-child(9) { animation-delay: 1.6s; }
+        .location-card-anim:nth-child(10) { animation-delay: 1.8s; }
+        .location-card-anim:nth-child(11) { animation-delay: 2.0s; }
+        .location-card-anim:nth-child(12) { animation-delay: 2.2s; }
     </style>
 </head>
-<body class="bg-white text-zinc-900 font-sans antialiased selection:bg-accent selection:text-white">
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-accent selection:text-white">
 
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-zinc-100 py-4 shadow-sm">
+    <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-slate-200 py-4 shadow-sm">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center relative">
             <div class="flex items-center gap-3">
-                <!-- Custom SVG: Crossed Screwdriver and Wrench (Smaller Size) -->
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8 text-black" viewBox="0 0 16 16">
-                    <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0Zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11Z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8 text-accent" viewBox="0 0 16 16">
+                    <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0Zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 11l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11Z"/>
                 </svg>
-                <span class="text-2xl font-display font-bold tracking-tight text-black">JUST REPAIR</span>
+                <span class="text-2xl font-display font-bold tracking-tight text-slate-900">JUST REPAIR</span>
             </div>
             
-            <div class="hidden md:flex gap-8 text-sm font-medium text-zinc-600">
-                <a class="hover:text-black transition-colors duration-300" href="#about">About</a>
-                <a class="hover:text-black transition-colors duration-300" href="#services">Services</a>
-                <a class="hover:text-black transition-colors duration-300" href="#process">Process</a>
-                <a class="hover:text-black transition-colors duration-300" href="#why-us">Why Us</a>
-                <a class="hover:text-black transition-colors duration-300" href="#reviews">Reviews</a>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-slate-600">
+                <a class="hover:text-accent transition-colors duration-300" href="#about">About</a>
+                <a class="hover:text-accent transition-colors duration-300" href="#services">Services</a>
+                <a class="hover:text-accent transition-colors duration-300" href="#pricing">Pricing</a>
+                <a class="hover:text-accent transition-colors duration-300" href="#process">Process</a>
+                <a class="hover:text-accent transition-colors duration-300" href="#reviews">Reviews</a>
             </div>
 
             <div class="flex items-center gap-4">
-                <!-- Mobile menu toggle -->
-                <button id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden w-10 h-10 rounded-full hover:bg-zinc-100 relative z-50 flex items-center justify-center">
+                <button id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden w-10 h-10 rounded-full hover:bg-slate-100 relative z-50 flex items-center justify-center">
                     <span id="icon-open" class="material-icons-round absolute transition-all duration-300 transform rotate-0 scale-100">menu</span>
                     <span id="icon-close" class="material-icons-round absolute transition-all duration-300 transform rotate-90 scale-0 opacity-0">close</span>
                 </button>
 
-                <a class="hidden md:flex items-center gap-2 text-sm font-semibold text-zinc-900 hover:text-accent transition-colors duration-300" href="tel:+917014883773">
-                    <span class="material-icons-round text-lg">call</span> +91 70148-83773
+                <a class="hidden md:flex items-center gap-2 text-sm font-semibold text-slate-900 hover:text-accent transition-colors duration-300" href="tel:+917014883773">
+                    <span class="material-icons-round text-lg text-accent">call</span> +91 70148-83773
                 </a>
-                <a class="hidden md:inline-flex bg-black hover:bg-zinc-800 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-transform hover:scale-105 shadow-xl shadow-black/10" href="#book">
+                <a class="hidden md:inline-flex bg-accent hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-transform hover:scale-105 shadow-lg shadow-blue-500/30" href="#book">
                     Book Service
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Mobile Menu (hidden on desktop) -->
-    <!-- Updated for smooth transition: Removed 'hidden', added translate/opacity logic -->
-    <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-[72px] bg-white/95 backdrop-blur-xl border-b border-zinc-100 shadow-xl z-40 transition-all duration-300 ease-in-out transform -translate-y-4 opacity-0 invisible pointer-events-none">
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-[72px] bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-xl z-40 transition-all duration-300 ease-in-out transform -translate-y-4 opacity-0 invisible pointer-events-none">
         <div class="max-w-7xl mx-auto px-6 py-6">
             <div class="flex flex-col gap-6">
-                <!-- Removed arrow icons for cleaner look -->
-                <a href="#about" class="text-lg font-medium text-zinc-800 hover:text-accent border-b border-zinc-100 pb-2 block transition-colors duration-300">About</a>
-                <a href="#services" class="text-lg font-medium text-zinc-800 hover:text-accent border-b border-zinc-100 pb-2 block transition-colors duration-300">Services</a>
-                <a href="#process" class="text-lg font-medium text-zinc-800 hover:text-accent border-b border-zinc-100 pb-2 block transition-colors duration-300">Process</a>
-                <a href="#why-us" class="text-lg font-medium text-zinc-800 hover:text-accent border-b border-zinc-100 pb-2 block transition-colors duration-300">Why Us</a>
-                <a href="#reviews" class="text-lg font-medium text-zinc-800 hover:text-accent border-b border-zinc-100 pb-2 block transition-colors duration-300">Reviews</a>
+                <a href="#about" class="text-lg font-medium text-slate-800 hover:text-accent border-b border-slate-100 pb-2 block transition-colors duration-300">About</a>
+                <a href="#services" class="text-lg font-medium text-slate-800 hover:text-accent border-b border-slate-100 pb-2 block transition-colors duration-300">Services</a>
+                <a href="#pricing" class="text-lg font-medium text-slate-800 hover:text-accent border-b border-slate-100 pb-2 block transition-colors duration-300">Pricing</a>
+                <a href="#process" class="text-lg font-medium text-slate-800 hover:text-accent border-b border-slate-100 pb-2 block transition-colors duration-300">Process</a>
+                <a href="#reviews" class="text-lg font-medium text-slate-800 hover:text-accent border-b border-slate-100 pb-2 block transition-colors duration-300">Reviews</a>
                 <div class="pt-2 flex flex-col gap-4">
-                    <a href="tel:+917014883773" class="inline-flex items-center gap-3 text-base font-bold text-zinc-900 bg-zinc-50 p-3 rounded-xl transition-colors duration-300">
+                    <a href="tel:+917014883773" class="inline-flex items-center gap-3 text-base font-bold text-slate-900 bg-slate-50 p-3 rounded-xl transition-colors duration-300">
                         <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm text-accent"><span class="material-icons-round text-lg">call</span></div> +91 70148-83773
                     </a>
                 </div>
@@ -170,60 +220,122 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <header class="relative min-h-[92vh] flex items-center bg-black overflow-hidden pt-28 pb-12 lg:pb-0">
-        <div class="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+    <!-- Enhanced Hero Section -->
+    <header class="relative min-h-[92vh] flex items-center bg-slate-950 overflow-hidden pt-32 pb-20 lg:pb-0">
+        <!-- Decorative Background Blobs for blending -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-0 pointer-events-none">
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 mix-blend-screen"></div>
+            <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 mix-blend-screen"></div>
+        </div>
+        
+        <!-- Subtle Noise Texture -->
+        <div class="absolute inset-0 opacity-10 mix-blend-soft-light pointer-events-none hero-pattern"></div>
+
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <!-- Content Side -->
             <div class="animate-fade-in-up order-1 flex flex-col justify-center">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/50 mb-6 backdrop-blur-sm w-fit">
-                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                    <span class="text-xs font-bold text-zinc-300 uppercase tracking-widest">Servicing Jaipur</span>
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-800 bg-slate-900/80 backdrop-blur-md mb-8 w-fit shadow-lg shadow-black/20">
+                    <span class="relative flex h-3 w-3">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    </span>
+                    <span class="text-xs font-bold text-slate-300 uppercase tracking-widest">Servicing Jaipur Area</span>
                 </div>
                 
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight tracking-tight">
-                    Expert Repair for Your<br/>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-white">Premium Home.</span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-white mb-6 leading-[1.1] tracking-tight">
+                    Expert Repair for <br class="hidden lg:block" />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400">Premium Homes.</span>
                 </h1>
                 
-                <p class="text-base sm:text-lg text-zinc-400 mb-8 max-w-lg font-light leading-relaxed">
-                    India's most trusted appliance care service. We bring authorized expertise to your doorstep with genuine parts and a satisfaction guarantee.
+                <p class="text-lg text-slate-400 mb-10 max-w-xl font-light leading-relaxed">
+                    India's most trusted appliance care service. We bring authorized expertise to your doorstep with genuine parts and a 100% satisfaction guarantee.
                 </p>
                 
-                <div class="flex flex-col sm:flex-row gap-4 mb-8 lg:mb-12">
-                    <button onclick="document.getElementById('book').scrollIntoView()" class="bg-white text-black hover:bg-zinc-200 px-8 py-4 rounded-full font-bold transition-all flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(255,255,255,0.2)]">
+                <div class="flex flex-col sm:flex-row gap-5 mb-12">
+                    <button onclick="document.getElementById('book').scrollIntoView()" class="group bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 hover:-translate-y-1 whitespace-nowrap">
                         <span>Book a Technician</span>
-                        <span class="material-icons-round text-sm">arrow_forward</span>
+                        <span class="material-icons-round text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
                     </button>
-                    <div class="flex items-center gap-4 px-2 sm:px-6">
+                    
+                    <!-- Trust Rating -->
+                    <div class="flex items-center gap-4 px-2 sm:px-4 py-2 rounded-full hover:bg-slate-900/50 transition-colors cursor-default">
                         <div class="flex -space-x-4">
-                            <img class="w-10 h-10 rounded-full border-2 border-black" src="https://i.pravatar.cc/100?img=11" alt="User">
-                            <img class="w-10 h-10 rounded-full border-2 border-black" src="https://i.pravatar.cc/100?img=5" alt="User">
-                            <img class="w-10 h-10 rounded-full border-2 border-black" src="https://i.pravatar.cc/100?img=3" alt="User">
+                            <img class="w-12 h-12 rounded-full border-4 border-slate-950" src="https://i.pravatar.cc/100?img=11" alt="User">
+                            <img class="w-12 h-12 rounded-full border-4 border-slate-950" src="https://i.pravatar.cc/100?img=5" alt="User">
+                            <div class="w-12 h-12 rounded-full border-4 border-slate-950 bg-slate-800 flex items-center justify-center text-xs font-bold text-white">+2k</div>
                         </div>
                         <div class="text-sm">
-                            <p class="text-white font-bold">4.9/5 Rating</p>
-                            <p class="text-zinc-500 text-xs">Based on 2k+ reviews</p>
+                            <div class="flex items-center gap-1 text-yellow-400">
+                                <span class="font-bold text-white text-base">4.9</span>
+                                <span class="material-icons-round text-sm">star</span>
+                                <span class="material-icons-round text-sm">star</span>
+                                <span class="material-icons-round text-sm">star</span>
+                                <span class="material-icons-round text-sm">star</span>
+                                <span class="material-icons-round text-sm">star_half</span>
+                            </div>
+                            <p class="text-slate-500 text-xs font-medium">Trusted by Jaipur</p>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Hero Trust Badges (Enhanced) -->
+                <div class="pt-8 border-t border-slate-800/60 flex flex-wrap gap-x-8 gap-y-4 text-slate-400 text-sm font-medium">
+                    <div class="flex items-center gap-3 group hover:text-white transition-colors">
+                        <div class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center border border-slate-800 group-hover:border-green-500/50 transition-colors shadow-sm">
+                            <span class="material-icons-round text-green-500 text-lg">verified_user</span>
+                        </div>
+                        <span>90-Day Warranty</span>
+                    </div>
+                    <div class="flex items-center gap-3 group hover:text-white transition-colors">
+                        <div class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center border border-slate-800 group-hover:border-blue-500/50 transition-colors shadow-sm">
+                            <span class="material-icons-round text-blue-500 text-lg">build</span>
+                        </div>
+                        <span>Genuine Parts</span>
+                    </div>
+                    <div class="flex items-center gap-3 group hover:text-white transition-colors">
+                        <div class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center border border-slate-800 group-hover:border-purple-500/50 transition-colors shadow-sm">
+                            <span class="material-icons-round text-purple-500 text-lg">payments</span>
+                        </div>
+                        <span>No Hidden Costs</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Enhanced Hero Image Layout (Visible on mobile now) -->
-            <div class="relative w-full h-[320px] sm:h-[500px] lg:h-[600px] animate-fade-in-up order-2 lg:mt-0" style="animation-delay: 0.2s;">
-                <div class="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent rounded-[2.5rem]"></div>
-                <img 
-                    alt="Indian Technician Repairing" 
-                    class="relative w-full h-full object-cover rounded-[2rem] border border-zinc-800 shadow-2xl z-10" 
-                    src="assets/hero/hero-section.png" loading="eager"
-                />
+            <!-- Hero Image Side -->
+            <div class="relative w-full h-[400px] sm:h-[500px] lg:h-[650px] animate-fade-in-up order-2 lg:mt-0 flex items-center justify-center" style="animation-delay: 0.2s;">
+                <!-- Glow Effect behind image -->
+                <div class="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent rounded-full blur-3xl transform translate-y-20 opacity-60"></div>
                 
-                <!-- Floating Card -->
-                <div class="absolute bottom-6 left-4 lg:bottom-12 lg:-left-8 glass-dark p-3 lg:p-4 rounded-2xl flex items-center gap-4 z-20 border-l-4 border-l-green-500 shadow-xl animate-float">
-                    <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 shrink-0">
-                        <span class="material-icons-round text-xl lg:text-2xl">verified</span>
+                <div class="relative w-full h-full rounded-[2.5rem] overflow-hidden border border-slate-800/50 shadow-2xl shadow-blue-900/20 bg-slate-900 group">
+                    <img 
+                        alt="Just Repair Professional Technician" 
+                        class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000" 
+                        src="assets/hero/hero-section.png" loading="eager"
+                    />
+                    <!-- Gradient Overlay at bottom for seamless blending -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
+                </div>
+                
+                <!-- Floating Stats Card 1 (Bottom Left) -->
+                <div class="absolute bottom-10 -left-4 md:-left-10 glass-dark p-4 pr-6 rounded-2xl flex items-center gap-4 z-20 border-l-4 border-l-green-500 shadow-xl animate-float backdrop-blur-xl">
+                    <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center text-green-400 shrink-0 border border-green-500/20">
+                        <span class="material-icons-round text-2xl">verified</span>
                     </div>
                     <div>
-                        <p class="text-white font-bold text-sm">Verified Professional</p>
-                        <p class="text-zinc-400 text-xs">Background Checked</p>
+                        <p class="text-white font-bold text-sm">100% Verified</p>
+                        <p class="text-slate-400 text-xs">Background Checked Pros</p>
+                    </div>
+                </div>
+
+                <!-- Floating Stats Card 2 (Top Right) - Balances Layout -->
+                <div class="absolute top-20 -right-4 md:-right-8 glass-dark p-3 px-5 rounded-2xl flex items-center gap-3 z-20 border border-slate-700/50 shadow-xl animate-float backdrop-blur-xl" style="animation-delay: 1.5s;">
+                    <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 shrink-0 border border-blue-500/20">
+                        <span class="material-icons-round text-xl">schedule</span>
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-xs">60 Min</p>
+                        <p class="text-slate-400 text-[10px]">Rapid Arrival</p>
                     </div>
                 </div>
             </div>
@@ -231,11 +343,9 @@
     </header>
 
     <!-- Brands Strip -->
-    <div class="bg-black border-y border-zinc-900 py-8 overflow-hidden">
+    <div class="bg-slate-900 border-y border-slate-800 py-8 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
-            <p class="text-center text-zinc-500 text-[10px] uppercase tracking-[0.3em] mb-6 font-bold">We Repair All Major Brands</p>
-            
-            <!-- Desktop: Static layout -->
+            <p class="text-center text-slate-500 text-[10px] uppercase tracking-[0.3em] mb-6 font-bold">We Repair All Major Brands</p>
             <div class="hidden md:flex justify-between items-center gap-8 opacity-80 hover:opacity-100 transition-all duration-500">
                 <img src="assets/brands/SAMSUNG.svg" alt="Samsung" class="w-20 h-16 object-contain">
                 <img src="assets/brands/LG.svg" alt="LG" class="w-20 h-16 object-contain">
@@ -244,39 +354,20 @@
                 <img src="assets/brands/VOLTAS.svg" alt="Voltas" class="w-20 h-16 object-contain">
                 <img src="assets/brands/GODREJ.svg" alt="Godrej" class="w-20 h-16 object-contain">
             </div>
-
-            <!-- Mobile: Marquee scrolling -->
             <div class="md:hidden relative w-full overflow-hidden">
                 <style>
-                    @keyframes scroll-left {
-                        0% { transform: translateX(0); }
-                        100% { transform: translateX(-50%); }
-                    }
-                    .marquee-content {
-                        display: flex;
-                        gap: 3rem;
-                        animation: scroll-left 30s linear infinite;
-                        width: max-content;
-                        will-change: transform;
-                    }
-                    .marquee-content:hover {
-                        animation-play-state: paused;
-                    }
+                    @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+                    .marquee-content { display: flex; gap: 3rem; animation: scroll-left 30s linear infinite; width: max-content; }
                 </style>
-                <!-- Gradient Masks for smooth fade -->
-                <div class="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
-                <div class="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
-
+                <div class="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-slate-900 to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-slate-900 to-transparent z-10 pointer-events-none"></div>
                 <div class="marquee-content opacity-80">
-                    <!-- Original Set -->
                     <img src="assets/brands/SAMSUNG.svg" alt="Samsung" class="w-14 h-10 object-contain shrink-0">
                     <img src="assets/brands/LG.svg" alt="LG" class="w-14 h-10 object-contain shrink-0">
                     <img src="assets/brands/WHIRLPOOL.svg" alt="Whirlpool" class="w-14 h-10 object-contain shrink-0">
                     <img src="assets/brands/IFB.svg" alt="IFB" class="w-14 h-10 object-contain shrink-0">
                     <img src="assets/brands/VOLTAS.svg" alt="Voltas" class="w-14 h-10 object-contain shrink-0">
                     <img src="assets/brands/GODREJ.svg" alt="Godrej" class="w-14 h-10 object-contain shrink-0">
-                    
-                    <!-- Duplicate Set for Seamless Loop -->
                     <img src="assets/brands/SAMSUNG.svg" alt="Samsung" class="w-14 h-10 object-contain shrink-0">
                     <img src="assets/brands/LG.svg" alt="LG" class="w-14 h-10 object-contain shrink-0">
                     <img src="assets/brands/WHIRLPOOL.svg" alt="Whirlpool" class="w-14 h-10 object-contain shrink-0">
@@ -288,830 +379,652 @@
         </div>
     </div>
 
-    <!-- About Us Section (New) -->
+    <!-- About Us Section -->
     <section id="about" class="py-20 px-6 bg-white">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
                 <span class="text-accent font-bold tracking-widest uppercase text-xs mb-2 block">Who We Are</span>
-                <h2 class="text-3xl md:text-4xl font-display font-bold text-black mb-6">Repairing Homes, <br>Building Trust.</h2>
-                <p class="text-zinc-600 mb-6 leading-relaxed">
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-6">Repairing Homes, <br>Building Trust.</h2>
+                <p class="text-slate-600 mb-6 leading-relaxed">
                     At JUST REPAIR, we believe that a broken appliance shouldn't break your day. Founded with a vision to organize the fragmented repair industry, we bring professionalism, transparency, and expertise to every job.
                 </p>
-                <p class="text-zinc-600 mb-8 leading-relaxed">
-                    Our team consists of certified engineers who are passionate about fixing things. We don't just repair machines; we restore comfort to your home.
-                </p>
-                <div class="flex gap-8 border-t border-zinc-100 pt-8">
+                <div class="flex gap-8 border-t border-slate-100 pt-8">
                     <div>
-                        <h4 class="font-bold text-2xl text-black">5+</h4>
-                        <p class="text-zinc-500 text-xs">Years Experience</p>
+                        <h4 class="font-bold text-2xl text-slate-900">5+</h4>
+                        <p class="text-slate-500 text-xs">Years Experience</p>
                     </div>
                     <div>
-                        <h4 class="font-bold text-2xl text-black">24/7</h4>
-                        <p class="text-zinc-500 text-xs">Support</p>
+                        <h4 class="font-bold text-2xl text-slate-900">24/7</h4>
+                        <p class="text-slate-500 text-xs">Support</p>
                     </div>
                 </div>
             </div>
             <div class="relative">
-                <div class="absolute -inset-4 bg-accent/5 rounded-3xl -z-10 transform rotate-2"></div>
-                <!-- Image moved to assets: assets/expertise/about-us-section.png -->
+                <div class="absolute -inset-4 bg-blue-100 rounded-3xl -z-10 transform rotate-2"></div>
                 <img src="assets/expertise/about-us-section.png" alt="Team of Indian Technicians" loading="lazy" class="rounded-2xl shadow-xl w-full object-cover h-[400px]">
             </div>
         </div>
     </section>
 
-    <!-- Services Section (Updated Grid) -->
-    <section id="services" class="py-24 px-4 bg-gray-50 relative">
+    <!-- Services Section -->
+    <section id="services" class="py-24 px-4 bg-slate-50 relative">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
                 <div>
                     <span class="text-accent font-bold tracking-widest uppercase text-xs mb-2 block">Our Services</span>
-                    <h2 class="text-4xl md:text-5xl font-display font-bold text-black">Complete Home <br>Solutions</h2>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-slate-900">Complete Home & <br>Commercial Solutions</h2>
                 </div>
-                <!-- CHANGED: View Rate Card to Contact Us -->
-                <a href="#book" class="hidden md:flex items-center gap-2 text-black font-semibold border-b-2 border-black pb-1 hover:text-accent hover:border-accent transition-all">
+                <a href="#book" class="hidden md:flex items-center gap-2 text-slate-900 font-semibold border-b-2 border-slate-900 pb-1 hover:text-accent hover:border-accent transition-all">
                     Contact Us <span class="material-icons-round text-sm">arrow_forward</span>
                 </a>
             </div>
 
-            <!-- Updated Bento Grid - Fully Mobile Responsive -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 md:gap-6 auto-rows-max md:auto-rows-[340px]">
-                
-                <!-- 1. AC Repair & Service -->
-                <div class="relative group overflow-hidden rounded-[2rem] bg-zinc-100 hover:bg-white border border-transparent hover:border-zinc-200 transition-all duration-300 cursor-pointer min-h-[280px] sm:min-h-auto">
-                     <div class="p-4 sm:p-6 z-10 relative h-full flex flex-col">
-                        <div class="w-10 sm:w-12 h-10 sm:h-12 bg-white rounded-full flex items-center justify-center mb-3 sm:mb-4 shadow-sm">
-                            <span class="material-icons-round text-xl sm:text-2xl text-black">ac_unit</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- 1. AC Repair -->
+                <div onclick="document.getElementById('book').scrollIntoView()" class="group bg-white rounded-3xl p-5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-slate-100 hover:border-blue-500 cursor-pointer flex flex-col h-[440px] relative overflow-hidden">
+                     <div class="flex justify-between items-start z-10">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center">
+                            <span class="material-icons-round text-2xl">ac_unit</span>
                         </div>
-                        <h3 class="text-base sm:text-lg md:text-xl font-bold text-black mb-1">AC Repair & Service</h3>
-                        <p class="text-zinc-500 text-xs mb-3 sm:mb-4">Split & Window AC. Gas filling, deep cleaning (jet pump), and PCB repair.</p>
-                        <div class="mt-auto h-40 sm:h-48 md:h-56 relative rounded-xl overflow-hidden">
-                             <img src="assets/services/ac.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" alt="AC Service">
-                        </div>
-                    </div>
+                        <span class="material-icons-round text-slate-300 group-hover:text-blue-500 transition-colors">arrow_outward</span>
+                     </div>
+                     <div class="mt-4 z-10">
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">AC Repair</h3>
+                        <p class="text-slate-500 text-xs line-clamp-2">Split, Window, Cassette AC. Gas filling & Service.</p>
+                     </div>
+                     <div class="mt-auto relative w-full h-64 rounded-xl overflow-hidden shadow-inner">
+                         <img src="assets/services/ac.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="AC Service">
+                     </div>
                 </div>
-
-                <!-- 2. Fridge (Normal single card, positioned right on desktop) -->
-                <div class="md:col-start-4 md:row-start-1 md:row-span-2 relative group overflow-hidden rounded-[2rem] bg-zinc-100 p-4 sm:p-6 md:p-8 flex flex-col justify-between hover:shadow-2xl hover:shadow-zinc-900/10 transition-all duration-500 cursor-pointer min-h-[300px] sm:min-h-auto">
-                    <div class="z-20 relative">
-                        <div class="w-10 sm:w-12 h-10 sm:h-12 bg-white rounded-full flex items-center justify-center mb-4 sm:mb-6 shadow-sm">
-                            <span class="material-icons-round text-xl sm:text-2xl text-black">kitchen</span>
+                <!-- 2. Refrigerator -->
+                <div onclick="document.getElementById('book').scrollIntoView()" class="group bg-white rounded-3xl p-5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-slate-100 hover:border-green-500 cursor-pointer flex flex-col h-[440px] relative overflow-hidden">
+                     <div class="flex justify-between items-start z-10">
+                        <div class="w-12 h-12 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center">
+                            <span class="material-icons-round text-2xl">kitchen</span>
                         </div>
-                        <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 text-black">Refrigerators</h3>
-                        <p class="text-zinc-700 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-6">Single door, double door, and side-by-side. We fix cooling issues and compressor faults.</p>
-                        <ul class="space-y-2 sm:space-y-3 text-xs sm:text-sm text-zinc-700 font-medium">
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Gas Refilling</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Thermostat Change</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Door Seal Fix</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Compressor Repair</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Ice Maker Repair</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Thermostat Calibration</li>
-                        </ul>
-                    </div>
-                    <!-- Bottom-anchored Refrigerator Image (like Microwave) -->
-                    <div class="mt-6 sm:mt-8 h-40 sm:h-48 md:h-56 relative rounded-xl overflow-hidden">
-                        <img src="assets/services/refrigerator.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" alt="Refrigerator">
-                    </div>
+                        <span class="material-icons-round text-slate-300 group-hover:text-green-500 transition-colors">arrow_outward</span>
+                     </div>
+                     <div class="mt-4 z-10">
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">Refrigerator</h3>
+                        <p class="text-slate-500 text-xs line-clamp-2">Single, Double Door & Side-by-Side repair.</p>
+                     </div>
+                     <div class="mt-auto relative w-full h-64 rounded-xl overflow-hidden shadow-inner">
+                         <img src="assets/services/refrigerator.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Refrigerator">
+                     </div>
                 </div>
-
                 <!-- 3. Washing Machine -->
-                <div class="relative group overflow-hidden rounded-[2rem] bg-zinc-100 hover:bg-white border border-transparent hover:border-zinc-200 transition-all duration-300 cursor-pointer min-h-[280px] sm:min-h-auto">
-                     <div class="p-4 sm:p-6 z-10 relative h-full flex flex-col">
-                        <div class="w-10 sm:w-12 h-10 sm:h-12 bg-white rounded-full flex items-center justify-center mb-3 sm:mb-4 shadow-sm">
-                            <span class="material-icons-round text-xl sm:text-2xl text-black">local_laundry_service</span>
+                <div onclick="document.getElementById('book').scrollIntoView()" class="group bg-white rounded-3xl p-5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-slate-100 hover:border-purple-500 cursor-pointer flex flex-col h-[440px] relative overflow-hidden">
+                     <div class="flex justify-between items-start z-10">
+                        <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center">
+                            <span class="material-icons-round text-2xl">local_laundry_service</span>
                         </div>
-                        <h3 class="text-base sm:text-lg md:text-xl font-bold text-black mb-1">Washing Machine</h3>
-                        <p class="text-zinc-500 text-xs mb-3 sm:mb-4">Front & Top Load. Motor & drum repair.</p>
-                        <div class="mt-auto h-40 sm:h-48 md:h-56 relative rounded-xl overflow-hidden">
-                             <img src="assets/services/washing-machine.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" alt="Washing Machine">
-                        </div>
-                    </div>
+                        <span class="material-icons-round text-slate-300 group-hover:text-purple-500 transition-colors">arrow_outward</span>
+                     </div>
+                     <div class="mt-4 z-10">
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">Washing Machine</h3>
+                        <p class="text-slate-500 text-xs line-clamp-2">Front Load, Top Load & Semi-automatic.</p>
+                     </div>
+                     <div class="mt-auto relative w-full h-64 rounded-xl overflow-hidden shadow-inner">
+                         <img src="assets/services/washing-machine.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Washing Machine">
+                     </div>
                 </div>
-
                 <!-- 4. Microwave -->
-                <div class="relative group overflow-hidden rounded-[2rem] bg-zinc-100 hover:bg-white border border-transparent hover:border-zinc-200 transition-all duration-300 cursor-pointer min-h-[280px] sm:min-h-auto">
-                     <div class="p-4 sm:p-6 z-10 relative h-full flex flex-col">
-                        <div class="w-10 sm:w-12 h-10 sm:h-12 bg-white rounded-full flex items-center justify-center mb-3 sm:mb-4 shadow-sm">
-                            <span class="material-icons-round text-xl sm:text-2xl text-black">microwave</span>
+                <div onclick="document.getElementById('book').scrollIntoView()" class="group bg-white rounded-3xl p-5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-slate-100 hover:border-red-500 cursor-pointer flex flex-col h-[440px] relative overflow-hidden">
+                     <div class="flex justify-between items-start z-10">
+                        <div class="w-12 h-12 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center">
+                            <span class="material-icons-round text-2xl">microwave</span>
                         </div>
-                        <h3 class="text-base sm:text-lg md:text-xl font-bold text-black mb-1">Microwave</h3>
-                        <p class="text-zinc-500 text-xs mb-3 sm:mb-4">Heating issues, panel repair & magnetron change.</p>
-                        <div class="mt-auto h-40 sm:h-48 md:h-56 relative rounded-xl overflow-hidden">
-                             <img src="assets/services/Microwave.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" alt="Microwave">
-                        </div>
-                    </div>
+                        <span class="material-icons-round text-slate-300 group-hover:text-red-500 transition-colors">arrow_outward</span>
+                     </div>
+                     <div class="mt-4 z-10">
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">Microwave</h3>
+                        <p class="text-slate-500 text-xs line-clamp-2">Heating issues, Panel failure & Magnetron fix.</p>
+                     </div>
+                     <div class="mt-auto relative w-full h-64 rounded-xl overflow-hidden shadow-inner">
+                         <img src="assets/services/Microwave.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Microwave">
+                     </div>
                 </div>
-
-                <!-- 5. Geyser -->
-                <div class="relative group overflow-hidden rounded-[2rem] bg-zinc-100 hover:bg-white border border-transparent hover:border-zinc-200 transition-all duration-300 cursor-pointer min-h-[280px] sm:min-h-auto">
-                     <div class="p-4 sm:p-6 z-10 relative h-full flex flex-col">
-                        <div class="w-10 sm:w-12 h-10 sm:h-12 bg-white rounded-full flex items-center justify-center mb-3 sm:mb-4 shadow-sm">
-                            <span class="material-icons-round text-xl sm:text-2xl text-black">water_drop</span>
+                <!-- 5. Water Cooler -->
+                <div onclick="document.getElementById('book').scrollIntoView()" class="group bg-white rounded-3xl p-5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-slate-100 hover:border-cyan-500 cursor-pointer flex flex-col h-[440px] relative overflow-hidden">
+                     <div class="flex justify-between items-start z-10">
+                        <div class="w-12 h-12 bg-cyan-50 text-cyan-600 rounded-2xl flex items-center justify-center">
+                            <span class="material-icons-round text-2xl">water_drop</span>
                         </div>
-                        <h3 class="text-base sm:text-lg md:text-xl font-bold text-black mb-1">Geyser Repair</h3>
-                        <p class="text-zinc-500 text-xs mb-3 sm:mb-4">Instant & Storage geysers. Heating element fix.</p>
-                         <div class="mt-auto h-40 sm:h-48 md:h-56 relative rounded-xl overflow-hidden">
-                             <img src="assets/services/Geyser.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all opacity-80" alt="Geyser">
-                        </div>
-                    </div>
+                        <span class="material-icons-round text-slate-300 group-hover:text-cyan-500 transition-colors">arrow_outward</span>
+                     </div>
+                     <div class="mt-4 z-10">
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">Water Cooler</h3>
+                        <p class="text-slate-500 text-xs line-clamp-2">Commercial & Home dispensers. Cooling fix.</p>
+                     </div>
+                     <div class="mt-auto relative w-full h-64 rounded-xl overflow-hidden shadow-inner">
+                         <img src="assets/services/Watercooler.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Water Cooler">
+                     </div>
                 </div>
-
-                <!-- 6. RO Purifier -->
-                <div class="relative group overflow-hidden rounded-[2rem] bg-zinc-100 hover:bg-white border border-transparent hover:border-zinc-200 transition-all duration-300 cursor-pointer min-h-[280px] sm:min-h-auto">
-                     <div class="p-4 sm:p-6 z-10 relative h-full flex flex-col">
-                        <div class="w-10 sm:w-12 h-10 sm:h-12 bg-white rounded-full flex items-center justify-center mb-3 sm:mb-4 shadow-sm">
-                            <span class="material-icons-round text-xl sm:text-2xl text-black">water_damage</span>
+                <!-- 6. Deep Fridge -->
+                <div onclick="document.getElementById('book').scrollIntoView()" class="group bg-white rounded-3xl p-5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-slate-100 hover:border-indigo-500 cursor-pointer flex flex-col h-[440px] relative overflow-hidden">
+                     <div class="flex justify-between items-start z-10">
+                        <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center">
+                            <span class="material-icons-round text-2xl">ac_unit</span>
                         </div>
-                        <h3 class="text-base sm:text-lg md:text-xl font-bold text-black mb-1">RO Purifier</h3>
-                        <p class="text-zinc-500 text-xs mb-3 sm:mb-4">Filter change, membrane replacement & service.</p>
-                        <div class="mt-auto h-40 sm:h-48 md:h-56 relative rounded-xl overflow-hidden">
-                             <img src="assets/services/RO.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all opacity-80" alt="RO Water">
+                        <span class="material-icons-round text-slate-300 group-hover:text-indigo-500 transition-colors">arrow_outward</span>
+                     </div>
+                     <div class="mt-4 z-10">
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">Deep Fridge</h3>
+                        <p class="text-slate-500 text-xs line-clamp-2">Chest freezers & Ice cream coolers repair.</p>
+                     </div>
+                     <div class="mt-auto relative w-full h-64 rounded-xl overflow-hidden shadow-inner">
+                         <img src="assets/services/DeepFridge.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Deep Freezer">
+                     </div>
+                </div>
+                <!-- 7. Sweet Counter -->
+                <div onclick="document.getElementById('book').scrollIntoView()" class="group bg-white rounded-3xl p-5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-slate-100 hover:border-pink-500 cursor-pointer flex flex-col h-[440px] relative overflow-hidden">
+                     <div class="flex justify-between items-start z-10">
+                        <div class="w-12 h-12 bg-pink-50 text-pink-600 rounded-2xl flex items-center justify-center">
+                            <span class="material-icons-round text-2xl">storefront</span>
                         </div>
-                    </div>
+                        <span class="material-icons-round text-slate-300 group-hover:text-pink-500 transition-colors">arrow_outward</span>
+                     </div>
+                     <div class="mt-4 z-10">
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">Sweet Counter</h3>
+                        <p class="text-slate-500 text-xs line-clamp-2">Display counter cooling & glass replacement.</p>
+                     </div>
+                     <div class="mt-auto relative w-full h-64 rounded-xl overflow-hidden shadow-inner">
+                         <img src="assets/services/sweetcounter.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Sweet Counter">
+                     </div>
                 </div>
-
-                <!-- 7. Other Appliances -->
-                <div class="relative group overflow-hidden rounded-[2rem] bg-zinc-900 text-white p-6 hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-center items-center text-center min-h-[280px] sm:min-h-auto">
-                    <div class="relative z-10">
-                        <h3 class="text-xl sm:text-2xl font-bold mb-2">Other Appliances</h3>
-                        <p class="text-zinc-400 text-xs mb-4 sm:mb-6">Chimneys, Hobs, Dishwashers & more.</p>
-                        <!-- CHANGED: View All to Contact Us -->
-                        <span class="inline-flex items-center gap-2 border-b border-white pb-1 text-xs sm:text-sm font-bold">Contact Us <span class="material-icons-round text-sm">arrow_forward</span></span>
-                    </div>
-                    <!-- CHANGED: Image source to appliance mix -->
-                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=600" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-700" alt="Home Appliances">
+                <!-- 8. Geyser -->
+                <div onclick="document.getElementById('book').scrollIntoView()" class="group bg-white rounded-3xl p-5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-slate-100 hover:border-orange-500 cursor-pointer flex flex-col h-[440px] relative overflow-hidden">
+                     <div class="flex justify-between items-start z-10">
+                        <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center">
+                            <span class="material-icons-round text-2xl">hot_tub</span>
+                        </div>
+                        <span class="material-icons-round text-slate-300 group-hover:text-orange-500 transition-colors">arrow_outward</span>
+                     </div>
+                     <div class="mt-4 z-10">
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">Geyser Repair</h3>
+                        <p class="text-slate-500 text-xs line-clamp-2">Instant, Storage & Gas geyser service.</p>
+                     </div>
+                     <div class="mt-auto relative w-full h-64 rounded-xl overflow-hidden shadow-inner">
+                         <img src="assets/services/Geyser.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Geyser">
+                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- How It Works Section (New) -->
-    <section id="process" class="py-24 px-4 bg-white border-y border-zinc-100">
-        <div class="max-w-7xl mx-auto">
+    <!-- Pricing Table -->
+    <section id="pricing" class="py-24 px-4 bg-white">
+        <div class="max-w-5xl mx-auto">
             <div class="text-center mb-16">
-                <span class="text-accent font-bold tracking-widest uppercase text-xs mb-2 block">Our Process</span>
-                <h2 class="text-4xl font-display font-bold text-black">How It Works</h2>
+                <span class="text-accent font-bold tracking-widest uppercase text-xs mb-2 block">Transparency</span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900">Standard Rate Card</h2>
+                <p class="text-slate-500 mt-2 text-sm">Min. Service / Inspection Charge. Adjusted in final bill.</p>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 relative">
-                <!-- Line hidden on mobile -->
-                <div class="hidden md:block absolute top-8 left-[12%] right-[12%] h-0.5 bg-zinc-200 -z-10"></div>
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse bg-slate-50 rounded-2xl overflow-hidden shadow-sm">
+                    <thead class="bg-slate-900 text-white">
+                        <tr>
+                            <th class="py-4 px-6 text-left text-sm font-bold uppercase tracking-wider">Service</th>
+                            <th class="py-4 px-6 text-left text-sm font-bold uppercase tracking-wider">Type</th>
+                            <th class="py-4 px-6 text-right text-sm font-bold uppercase tracking-wider">Visiting Charge</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-700 text-sm">
+                        <tr class="border-b border-slate-200 hover:bg-white transition-colors">
+                            <td class="py-4 px-6 font-semibold">AC Repair</td>
+                            <td class="py-4 px-6">Inspection (Split/Window)</td>
+                            <td class="py-4 px-6 text-right">
+                                <span class="bg-blue-50 text-blue-700 border border-blue-100 px-4 py-2 rounded-lg font-bold shadow-sm">₹199</span>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-slate-200 hover:bg-white transition-colors">
+                            <td class="py-4 px-6 font-semibold">Refrigerator</td>
+                            <td class="py-4 px-6">Inspection & Checkup</td>
+                            <td class="py-4 px-6 text-right">
+                                <span class="bg-blue-50 text-blue-700 border border-blue-100 px-4 py-2 rounded-lg font-bold shadow-sm">₹149</span>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-slate-200 hover:bg-white transition-colors">
+                            <td class="py-4 px-6 font-semibold">Washing Machine</td>
+                            <td class="py-4 px-6">General Inspection</td>
+                            <td class="py-4 px-6 text-right">
+                                <span class="bg-blue-50 text-blue-700 border border-blue-100 px-4 py-2 rounded-lg font-bold shadow-sm">₹149</span>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-slate-200 hover:bg-white transition-colors">
+                            <td class="py-4 px-6 font-semibold">Microwave</td>
+                            <td class="py-4 px-6">Checkup & Diagnosis</td>
+                            <td class="py-4 px-6 text-right">
+                                <span class="bg-blue-50 text-blue-700 border border-blue-100 px-4 py-2 rounded-lg font-bold shadow-sm">₹149</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-white transition-colors">
+                            <td class="py-4 px-6 font-semibold">Geyser</td>
+                            <td class="py-4 px-6">Inspection Service</td>
+                            <td class="py-4 px-6 text-right">
+                                <span class="bg-blue-50 text-blue-700 border border-blue-100 px-4 py-2 rounded-lg font-bold shadow-sm">₹149</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center mt-6 space-y-2">
+                <p class="text-xs text-slate-400">* Prices mentioned are minimum visiting charges. Final repair cost depends on parts used.</p>
+                <p class="text-sm font-bold text-green-600 bg-green-50 inline-block px-4 py-2 rounded-full border border-green-100">
+                    <span class="material-icons-round text-base align-middle mr-1">check_circle</span>
+                    Visiting Charge is FREE if you avail the service (Adjusted in final bill).
+                </p>
+            </div>
+        </div>
+    </section>
 
-                <!-- Step 1 -->
-                <div class="flex flex-col items-center text-center group">
-                    <div class="w-16 h-16 bg-white border-2 border-zinc-100 rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:border-accent group-hover:shadow-md transition-all relative z-10">
-                        <span class="material-icons-round text-zinc-700 group-hover:text-accent">calendar_month</span>
-                        <span class="absolute -top-2 -right-2 w-6 h-6 bg-black text-white rounded-full text-xs flex items-center justify-center font-bold">1</span>
+    <!-- Localities We Serve (With Map Icon & Animation) -->
+    <section class="py-20 bg-slate-50 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+             <div class="text-center mb-12">
+                <span class="text-accent font-bold tracking-widest uppercase text-xs mb-2 block">Our Reach</span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900">Servicing All Major Areas in Jaipur</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <!-- Locations with Map Icon and Sequential Pulse Animation -->
+                <div class="location-card-anim bg-white p-4 rounded-xl flex flex-col items-center justify-center gap-3 text-center shadow-sm border border-slate-100 hover:bg-blue-50 transition-colors cursor-default group">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <span class="material-icons-round text-2xl">place</span>
                     </div>
-                    <h3 class="text-lg font-bold mb-2">Book Service</h3>
-                    <p class="text-zinc-500 text-sm">Select your issue and choose a convenient time slot.</p>
+                    <span class="text-sm font-bold text-slate-700 group-hover:text-blue-700">Vaishali Nagar</span>
                 </div>
-
-                <!-- Step 2 -->
-                <div class="flex flex-col items-center text-center group">
-                    <div class="w-16 h-16 bg-white border-2 border-zinc-100 rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:border-accent group-hover:shadow-md transition-all relative z-10">
-                        <span class="material-icons-round text-zinc-700 group-hover:text-accent">person_pin</span>
-                        <span class="absolute -top-2 -right-2 w-6 h-6 bg-black text-white rounded-full text-xs flex items-center justify-center font-bold">2</span>
+                <div class="location-card-anim bg-white p-4 rounded-xl flex flex-col items-center justify-center gap-3 text-center shadow-sm border border-slate-100 hover:bg-blue-50 transition-colors cursor-default group">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <span class="material-icons-round text-2xl">place</span>
                     </div>
-                    <h3 class="text-lg font-bold mb-2">Expert Arrives</h3>
-                    <p class="text-zinc-500 text-sm">Our verified technician arrives at your doorstep on time.</p>
+                    <span class="text-sm font-bold text-slate-700 group-hover:text-blue-700">Mansarovar</span>
                 </div>
-
-                <!-- Step 3 -->
-                <div class="flex flex-col items-center text-center group">
-                    <div class="w-16 h-16 bg-white border-2 border-zinc-100 rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:border-accent group-hover:shadow-md transition-all relative z-10">
-                        <span class="material-icons-round text-zinc-700 group-hover:text-accent">build_circle</span>
-                        <span class="absolute -top-2 -right-2 w-6 h-6 bg-black text-white rounded-full text-xs flex items-center justify-center font-bold">3</span>
+                <div class="location-card-anim bg-white p-4 rounded-xl flex flex-col items-center justify-center gap-3 text-center shadow-sm border border-slate-100 hover:bg-blue-50 transition-colors cursor-default group">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <span class="material-icons-round text-2xl">place</span>
                     </div>
-                    <h3 class="text-lg font-bold mb-2">Quick Repair</h3>
-                    <p class="text-zinc-500 text-sm">We diagnose and fix the issue using genuine spare parts.</p>
+                    <span class="text-sm font-bold text-slate-700 group-hover:text-blue-700">Raja Park</span>
                 </div>
-
-                <!-- Step 4 -->
-                <div class="flex flex-col items-center text-center group">
-                    <div class="w-16 h-16 bg-white border-2 border-zinc-100 rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:border-accent group-hover:shadow-md transition-all relative z-10">
-                        <span class="material-icons-round text-zinc-700 group-hover:text-accent">payments</span>
-                        <span class="absolute -top-2 -right-2 w-6 h-6 bg-black text-white rounded-full text-xs flex items-center justify-center font-bold">4</span>
+                <div class="location-card-anim bg-white p-4 rounded-xl flex flex-col items-center justify-center gap-3 text-center shadow-sm border border-slate-100 hover:bg-blue-50 transition-colors cursor-default group">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <span class="material-icons-round text-2xl">place</span>
                     </div>
-                    <h3 class="text-lg font-bold mb-2">Pay & Relax</h3>
-                    <p class="text-zinc-500 text-sm">Pay securely via UPI or Cash after the job is done.</p>
+                    <span class="text-sm font-bold text-slate-700 group-hover:text-blue-700">Malviya Nagar</span>
+                </div>
+                <div class="location-card-anim bg-white p-4 rounded-xl flex flex-col items-center justify-center gap-3 text-center shadow-sm border border-slate-100 hover:bg-blue-50 transition-colors cursor-default group">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <span class="material-icons-round text-2xl">place</span>
+                    </div>
+                    <span class="text-sm font-bold text-slate-700 group-hover:text-blue-700">Jhotwara</span>
+                </div>
+                <div class="location-card-anim bg-white p-4 rounded-xl flex flex-col items-center justify-center gap-3 text-center shadow-sm border border-slate-100 hover:bg-blue-50 transition-colors cursor-default group">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <span class="material-icons-round text-2xl">place</span>
+                    </div>
+                    <span class="text-sm font-bold text-slate-700 group-hover:text-blue-700">C-Scheme</span>
+                </div>
+                <div class="location-card-anim bg-white p-4 rounded-xl flex flex-col items-center justify-center gap-3 text-center shadow-sm border border-slate-100 hover:bg-blue-50 transition-colors cursor-default group">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <span class="material-icons-round text-2xl">place</span>
+                    </div>
+                    <span class="text-sm font-bold text-slate-700 group-hover:text-blue-700">Jagatpura</span>
+                </div>
+                <div class="location-card-anim bg-white p-4 rounded-xl flex flex-col items-center justify-center gap-3 text-center shadow-sm border border-slate-100 hover:bg-blue-50 transition-colors cursor-default group">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <span class="material-icons-round text-2xl">place</span>
+                    </div>
+                    <span class="text-sm font-bold text-slate-700 group-hover:text-blue-700">Sanganer</span>
+                </div>
+                <div class="location-card-anim bg-white p-4 rounded-xl flex flex-col items-center justify-center gap-3 text-center shadow-sm border border-slate-100 hover:bg-blue-50 transition-colors cursor-default group">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <span class="material-icons-round text-2xl">place</span>
+                    </div>
+                    <span class="text-sm font-bold text-slate-700 group-hover:text-blue-700">Tonk Road</span>
+                </div>
+                <div class="location-card-anim bg-white p-4 rounded-xl flex flex-col items-center justify-center gap-3 text-center shadow-sm border border-slate-100 hover:bg-blue-50 transition-colors cursor-default group">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <span class="material-icons-round text-2xl">place</span>
+                    </div>
+                    <span class="text-sm font-bold text-slate-700 group-hover:text-blue-700">Ajmer Road</span>
+                </div>
+                <div class="location-card-anim bg-white p-4 rounded-xl flex flex-col items-center justify-center gap-3 text-center shadow-sm border border-slate-100 hover:bg-blue-50 transition-colors cursor-default group">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <span class="material-icons-round text-2xl">place</span>
+                    </div>
+                    <span class="text-sm font-bold text-slate-700 group-hover:text-blue-700">Bani Park</span>
+                </div>
+                <div class="location-card-anim bg-white p-4 rounded-xl flex flex-col items-center justify-center gap-3 text-center shadow-sm border border-slate-100 hover:bg-blue-50 transition-colors cursor-default group">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <span class="material-icons-round text-2xl">place</span>
+                    </div>
+                    <span class="text-sm font-bold text-slate-700 group-hover:text-blue-700">Civil Lines</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us (New Section 6 Icons) -->
-    <section id="why-us" class="py-24 px-4 bg-off-white">
+    <!-- Why Choose Us (Blue Icons) -->
+    <section id="why-us" class="py-24 px-4 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <span class="text-accent font-bold tracking-widest uppercase text-xs mb-2 block">Our Promise</span>
-                <h2 class="text-4xl font-display font-bold text-black">Why Choose Us</h2>
+                <h2 class="text-4xl font-display font-bold text-slate-900">Why Choose Us</h2>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Box 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-zinc-100 hover:-translate-y-1 transition-transform">
-                    <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-4 text-white">
+                <div class="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-100 hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-4 text-white">
                         <span class="material-icons-round">schedule</span>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">On-Time Service</h3>
-                    <p class="text-zinc-500 text-sm">We value your time. Our technicians arrive within the scheduled 2-hour slot.</p>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">On-Time Service</h3>
+                    <p class="text-slate-500 text-sm">We value your time. Our technicians arrive within the scheduled 2-hour slot.</p>
                 </div>
-                 <!-- Box 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-zinc-100 hover:-translate-y-1 transition-transform">
-                    <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-4 text-white">
+                 <div class="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-100 hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-4 text-white">
                         <span class="material-icons-round">verified_user</span>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Background Verified</h3>
-                    <p class="text-zinc-500 text-sm">Every technician undergoes strict police verification and background checks.</p>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">Background Verified</h3>
+                    <p class="text-slate-500 text-sm">Every technician undergoes strict police verification and background checks.</p>
                 </div>
-                 <!-- Box 3 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-zinc-100 hover:-translate-y-1 transition-transform">
-                    <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-4 text-white">
+                <div class="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-100 hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-4 text-white">
                         <span class="material-icons-round">build</span>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Genuine Parts</h3>
-                    <p class="text-zinc-500 text-sm">We use only 100% original spare parts with manufacturer warranty.</p>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">Genuine Parts</h3>
+                    <p class="text-slate-500 text-sm">We use only 100% original spare parts with manufacturer warranty.</p>
                 </div>
-                 <!-- Box 4 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-zinc-100 hover:-translate-y-1 transition-transform">
-                    <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-4 text-white">
+                 <div class="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-100 hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-4 text-white">
                         <span class="material-icons-round">currency_rupee</span>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Transparent Pricing</h3>
-                    <p class="text-zinc-500 text-sm">Upfront rate card. No hidden charges or last-minute surprises.</p>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">Transparent Pricing</h3>
+                    <p class="text-slate-500 text-sm">Upfront rate card. No hidden charges or last-minute surprises.</p>
                 </div>
-                 <!-- Box 5 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-zinc-100 hover:-translate-y-1 transition-transform">
-                    <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-4 text-white">
+                 <div class="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-100 hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-4 text-white">
                         <span class="material-icons-round">security</span>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Free Diagnostics</h3>
-                    <p class="text-zinc-500 text-sm">Complimentary inspection & quote — no visiting charge if you book a repair.</p>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">Free Diagnostics</h3>
+                    <p class="text-slate-500 text-sm">Complimentary inspection & quote — no visiting charge if you book a repair.</p>
                 </div>
-                 <!-- Box 6 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-zinc-100 hover:-translate-y-1 transition-transform">
-                    <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-4 text-white">
+                 <div class="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-100 hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-4 text-white">
                         <span class="material-icons-round">support_agent</span>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Post-Service Support</h3>
-                    <p class="text-zinc-500 text-sm">Dedicated customer support team available 7 days a week.</p>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">Post-Service Support</h3>
+                    <p class="text-slate-500 text-sm">Dedicated customer support team available 7 days a week.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Fun Facts Section (New) -->
-    <section class="py-20 bg-black text-white relative overflow-hidden">
-        <!-- Decorative background elements -->
+    <!-- Fun Facts Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-700 to-blue-900 text-white relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full opacity-20 hero-pattern"></div>
-        
-        <!-- Added ID for intersection observer -->
         <div id="fun-facts" class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 <div class="p-6">
-                    <!-- CHANGED: Color to White -->
-                    <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2">
-                        <span class="counter" data-target="15">0</span>k+
-                    </h3>
-                    <p class="text-zinc-400 text-sm uppercase tracking-wider font-medium">Repairs Done</p>
+                    <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2"><span class="counter" data-target="15">0</span>k+</h3>
+                    <p class="text-blue-200 text-sm uppercase tracking-wider font-medium">Repairs Done</p>
                 </div>
                 <div class="p-6">
-                    <!-- CHANGED: Color to White -->
-                    <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2">
-                        <span class="counter" data-target="4.5">0</span>
-                    </h3>
-                    <p class="text-zinc-400 text-sm uppercase tracking-wider font-medium">Average Rating</p>
+                    <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2"><span class="counter" data-target="4.5">0</span></h3>
+                    <p class="text-blue-200 text-sm uppercase tracking-wider font-medium">Average Rating</p>
                 </div>
                 <div class="p-6">
-                    <!-- CHANGED: Color to White -->
-                    <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2">
-                        <span class="counter" data-target="50">0</span>+
-                    </h3>
-                    <p class="text-zinc-400 text-sm uppercase tracking-wider font-medium">Expert Techs</p>
+                    <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2"><span class="counter" data-target="50">0</span>+</h3>
+                    <p class="text-blue-200 text-sm uppercase tracking-wider font-medium">Expert Techs</p>
                 </div>
                 <div class="p-6">
-                    <!-- CHANGED: Color to White -->
-                    <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2">
-                        <span class="counter" data-target="90">0</span>%
-                    </h3>
-                    <p class="text-zinc-400 text-sm uppercase tracking-wider font-medium">Same Day Fix</p>
+                    <h3 class="text-4xl md:text-5xl font-display font-bold text-white mb-2"><span class="counter" data-target="90">0</span>%</h3>
+                    <p class="text-blue-200 text-sm uppercase tracking-wider font-medium">Same Day Fix</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why JUST REPAIR (Existing - Refined) -->
-    <section class="py-24 px-4 bg-white relative">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div class="order-2 lg:order-1 relative">
-                <div class="grid grid-cols-2 gap-4">
-                    <!-- Tool Image -->
-                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&q=80&w=600" class="rounded-2xl shadow-lg w-full h-64 object-cover mt-12" alt="Tools">
-                    <!-- Technician Image (Fixed) -->
-                    <img src="assets/expertise/technician-2.jpg" class="rounded-2xl shadow-lg w-full h-64 object-cover grayscale hover:grayscale-0 transition-all" alt="JUST REPAIR Technician">
-                </div>
-                <!-- Stat Card -->
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black text-white p-6 rounded-2xl shadow-2xl text-center min-w-[200px]">
-                    <span class="text-4xl font-display font-bold block mb-1">10k+</span>
-                    <span class="text-xs uppercase tracking-widest text-zinc-400 font-semibold">Happy Homes</span>
-                </div>
+    <!-- Process Section -->
+    <section id="process" class="py-24 px-4 bg-slate-50 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-accent font-bold tracking-widest uppercase text-xs mb-2 block">Our Process</span>
+                <h2 class="text-4xl font-display font-bold text-slate-900">How It Works</h2>
             </div>
             
-            <div class="order-1 lg:order-2">
-                <h2 class="text-4xl md:text-5xl font-display font-bold text-black mb-6">Expertise You Can <br>Count On</h2>
-                <p class="text-zinc-600 mb-8 text-lg">We understand how frustrating it is when appliances break down. That's why we've built a service that puts speed and quality first.</p>
-                
-                <div class="space-y-6">
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 rounded-full bg-off-white flex items-center justify-center shrink-0">
-                            <span class="material-icons-round text-black">school</span>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-lg text-black">Trained Experts</h4>
-                            <p class="text-zinc-500 text-sm">Our team is trained on the latest technologies from top brands like Samsung, LG, and Bosch.</p>
-                        </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 relative">
+                <div class="hidden md:block absolute top-8 left-[12%] right-[12%] h-0.5 bg-slate-200 -z-10"></div>
+                <div class="flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-white border-2 border-slate-100 rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:border-accent group-hover:shadow-md transition-all relative z-10">
+                        <span class="material-icons-round text-slate-700 group-hover:text-accent">calendar_month</span>
+                        <span class="absolute -top-2 -right-2 w-6 h-6 bg-slate-900 text-white rounded-full text-xs flex items-center justify-center font-bold">1</span>
                     </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 rounded-full bg-off-white flex items-center justify-center shrink-0">
-                            <span class="material-icons-round text-black">sanitizer</span>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-lg text-black">Hygiene First</h4>
-                            <p class="text-zinc-500 text-sm">Strict sanitization protocols. We ensure your home stays safe and clean.</p>
-                        </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-900">Book Service</h3>
+                    <p class="text-slate-500 text-sm">Select your issue and choose a convenient time slot.</p>
+                </div>
+                <div class="flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-white border-2 border-slate-100 rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:border-accent group-hover:shadow-md transition-all relative z-10">
+                        <span class="material-icons-round text-slate-700 group-hover:text-accent">person_pin</span>
+                        <span class="absolute -top-2 -right-2 w-6 h-6 bg-slate-900 text-white rounded-full text-xs flex items-center justify-center font-bold">2</span>
                     </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-900">Expert Arrives</h3>
+                    <p class="text-slate-500 text-sm">Our verified technician arrives at your doorstep on time.</p>
+                </div>
+                 <div class="flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-white border-2 border-slate-100 rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:border-accent group-hover:shadow-md transition-all relative z-10">
+                        <span class="material-icons-round text-slate-700 group-hover:text-accent">build_circle</span>
+                        <span class="absolute -top-2 -right-2 w-6 h-6 bg-slate-900 text-white rounded-full text-xs flex items-center justify-center font-bold">3</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-900">Quick Repair</h3>
+                    <p class="text-slate-500 text-sm">We diagnose and fix the issue using genuine spare parts.</p>
+                </div>
+                 <div class="flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-white border-2 border-slate-100 rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:border-accent group-hover:shadow-md transition-all relative z-10">
+                        <span class="material-icons-round text-slate-700 group-hover:text-accent">payments</span>
+                        <span class="absolute -top-2 -right-2 w-6 h-6 bg-slate-900 text-white rounded-full text-xs flex items-center justify-center font-bold">4</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-900">Pay & Relax</h3>
+                    <p class="text-slate-500 text-sm">Pay securely via UPI or Cash after the job is done.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section Code Starts Here -->
-    <section id="reviews" class="py-24 px-4 bg-off-white border-t border-zinc-100">
+    <!-- Testimonials Section -->
+    <section id="reviews" class="py-24 px-4 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12">
-                <h2 class="text-3xl sm:text-4xl font-display font-bold text-black whitespace-nowrap sm:whitespace-normal">What Our Clients Say</h2>
+                <h2 class="text-3xl sm:text-4xl font-display font-bold text-slate-900 whitespace-nowrap sm:whitespace-normal">What Our Clients Say</h2>
             </div>
             
-            <!-- Unified Carousel System -->
             <div>
                 <style>
-                    .testimonials-carousel-container {
-                        position: relative;
-                        overflow: hidden;
-                        padding: 0 1rem;
-                        margin: 0 -1rem; /* Negative margin to compensate padding on small screens */
-                    }
-                    @media(min-width: 768px) {
-                         .testimonials-carousel-container {
-                            padding: 0;
-                            margin: 0;
-                         }
-                    }
-
-                    .testimonials-carousel-inner {
-                        display: flex;
-                        transition: transform 0.5s ease-in-out;
-                    }
-
-                    .testimonial-card-wrapper {
-                        flex: 0 0 100%; /* Mobile: 1 card per view (centered) */
-                        padding: 0 10px; /* Gap simulation */
-                        box-sizing: border-box;
-                    }
-
-                    @media (min-width: 768px) {
-                        .testimonial-card-wrapper {
-                            flex: 0 0 33.3333%; /* Desktop: 3 cards per view */
-                            padding: 0 12px;
-                        }
-                    }
-
-                    .carousel-controls {
-                        display: flex;
-                        justify-content: center;
-                        gap: 1rem;
-                        margin-top: 2rem;
-                    }
-                    .carousel-btn {
-                        width: 44px;
-                        height: 44px;
-                        border-radius: 50%;
-                        border: 2px solid #000;
-                        background: white;
-                        cursor: pointer;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        transition: all 0.3s ease;
-                        font-size: 20px;
-                        color: black;
-                    }
-                    .carousel-btn:hover {
-                        background: #000;
-                        color: white;
-                    }
-                    .carousel-btn:disabled {
-                        opacity: 0.3;
-                        cursor: not-allowed;
-                        background: #eee;
-                        border-color: #ddd;
-                        color: #999;
-                    }
+                    .testimonials-carousel-container { position: relative; overflow: hidden; padding: 0 1rem; margin: 0 -1rem; }
+                    @media(min-width: 768px) { .testimonials-carousel-container { padding: 0; margin: 0; } }
+                    .testimonials-carousel-inner { display: flex; transition: transform 0.5s ease-in-out; }
+                    .testimonial-card-wrapper { flex: 0 0 100%; padding: 0 10px; box-sizing: border-box; }
+                    @media (min-width: 768px) { .testimonial-card-wrapper { flex: 0 0 33.3333%; padding: 0 12px; } }
+                    .carousel-controls { display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; }
+                    .carousel-btn { width: 44px; height: 44px; border-radius: 50%; border: 2px solid #0f172a; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; font-size: 20px; color: #0f172a; }
+                    .carousel-btn:hover { background: #0f172a; color: white; }
+                    .carousel-btn:disabled { opacity: 0.3; cursor: not-allowed; background: #eee; border-color: #ddd; color: #999; }
                 </style>
 
                 <div class="testimonials-carousel-container">
                     <div class="testimonials-carousel-inner" id="carouselInner">
-                        
-                        <!-- Review 1 -->
-                        <div class="testimonial-card-wrapper">
-                            <div class="bg-white p-8 rounded-[2rem] shadow-sm relative h-full flex flex-col justify-between">
-                                <div>
-                                    <span class="material-icons-round text-4xl text-zinc-100 absolute top-6 right-6">format_quote</span>
-                                    <div class="flex items-center gap-1 text-yellow-500 mb-4">
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                    </div>
-                                    <p class="text-zinc-700 font-medium mb-6 text-sm leading-relaxed">"Service bohot badhiya tha! Technician time pe aaya aur AC cool kar diya. Pricing bhi transparent thi, koi extra charge nahi manga."</p>
-                                </div>
-                                <div class="flex items-center gap-3 mt-auto">
-                                    <div class="w-10 h-10 rounded-full bg-zinc-200 flex items-center justify-center text-xs font-bold text-zinc-700">RK</div>
-                                    <div>
-                                        <p class="font-bold text-sm text-black">Rahul Kumar</p>
-                                        <p class="text-xs text-zinc-500">AC Repair</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Review 2 -->
-                        <div class="testimonial-card-wrapper">
-                            <div class="bg-white p-8 rounded-[2rem] shadow-sm relative h-full flex flex-col justify-between">
-                                <div>
-                                    <span class="material-icons-round text-4xl text-zinc-100 absolute top-6 right-6">format_quote</span>
-                                    <div class="flex items-center gap-1 text-yellow-500 mb-4">
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                    </div>
-                                    <p class="text-zinc-700 font-medium mb-6 text-sm leading-relaxed">"Meri washing machine bilkul kaam nahi kar rahi thi. JUST REPAIR team ne same day fix kar diya. Genuine parts use kiye."</p>
-                                </div>
-                                <div class="flex items-center gap-3 mt-auto">
-                                    <div class="w-10 h-10 rounded-full bg-zinc-200 flex items-center justify-center text-xs font-bold text-zinc-700">PS</div>
-                                    <div>
-                                        <p class="font-bold text-sm text-black">Priya Sharma</p>
-                                        <p class="text-xs text-zinc-500">Washing Machine</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Review 3 -->
-                        <div class="testimonial-card-wrapper">
-                            <div class="bg-white p-8 rounded-[2rem] shadow-sm relative h-full flex flex-col justify-between">
-                                <div>
-                                    <span class="material-icons-round text-4xl text-zinc-100 absolute top-6 right-6">format_quote</span>
-                                    <div class="flex items-center gap-1 text-yellow-500 mb-4">
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                    </div>
-                                    <p class="text-zinc-700 font-medium mb-6 text-sm leading-relaxed">"Fridge cooling issue tha. Technician ne professionally handle kiya. Behavior was very polite. Kaafi accha experience raha."</p>
-                                </div>
-                                <div class="flex items-center gap-3 mt-auto">
-                                    <div class="w-10 h-10 rounded-full bg-zinc-200 flex items-center justify-center text-xs font-bold text-zinc-700">AS</div>
-                                    <div>
-                                        <p class="font-bold text-sm text-black">Amit Singh</p>
-                                        <p class="text-xs text-zinc-500">Refrigerator</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Review 4 -->
-                        <div class="testimonial-card-wrapper">
-                            <div class="bg-white p-8 rounded-[2rem] shadow-sm relative h-full flex flex-col justify-between">
-                                <div>
-                                    <span class="material-icons-round text-4xl text-zinc-100 absolute top-6 right-6">format_quote</span>
-                                    <div class="flex items-center gap-1 text-yellow-500 mb-4">
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                    </div>
-                                    <p class="text-zinc-700 font-medium mb-6 text-sm leading-relaxed">"Microwave theek karna tha aur same day service mili. Technician bahut professional the. Saari problem solve ho gayi!"</p>
-                                </div>
-                                <div class="flex items-center gap-3 mt-auto">
-                                    <div class="w-10 h-10 rounded-full bg-zinc-200 flex items-center justify-center text-xs font-bold text-zinc-700">NK</div>
-                                    <div>
-                                        <p class="font-bold text-sm text-black">Neha Kapoor</p>
-                                        <p class="text-xs text-zinc-500">Microwave</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Review 5 -->
-                        <div class="testimonial-card-wrapper">
-                            <div class="bg-white p-8 rounded-[2rem] shadow-sm relative h-full flex flex-col justify-between">
-                                <div>
-                                    <span class="material-icons-round text-4xl text-zinc-100 absolute top-6 right-6">format_quote</span>
-                                    <div class="flex items-center gap-1 text-yellow-500 mb-4">
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                    </div>
-                                    <p class="text-zinc-700 font-medium mb-6 text-sm leading-relaxed">"Geyser ke liye call kiya aur karib 30 mins mein technician aa gaya. Bahut efficient service! Definitely recommend."</p>
-                                </div>
-                                <div class="flex items-center gap-3 mt-auto">
-                                    <div class="w-10 h-10 rounded-full bg-zinc-200 flex items-center justify-center text-xs font-bold text-zinc-700">VJ</div>
-                                    <div>
-                                        <p class="font-bold text-sm text-black">Vijay Joshi</p>
-                                        <p class="text-xs text-zinc-500">Geyser</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                         <!-- Review 6 -->
-                         <div class="testimonial-card-wrapper">
-                            <div class="bg-white p-8 rounded-[2rem] shadow-sm relative h-full flex flex-col justify-between">
-                                <div>
-                                    <span class="material-icons-round text-4xl text-zinc-100 absolute top-6 right-6">format_quote</span>
-                                    <div class="flex items-center gap-1 text-yellow-500 mb-4">
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                        <span class="material-icons-round text-sm">star</span>
-                                    </div>
-                                    <p class="text-zinc-700 font-medium mb-6 text-sm leading-relaxed">"Chimney ke filters change karne ke liye contact kiya. Bilkul transparent pricing aur quick service. Bahut khush hoon!"</p>
-                                </div>
-                                <div class="flex items-center gap-3 mt-auto">
-                                    <div class="w-10 h-10 rounded-full bg-zinc-200 flex items-center justify-center text-xs font-bold text-zinc-700">OP</div>
-                                    <div>
-                                        <p class="font-bold text-sm text-black">Om Patel</p>
-                                        <p class="text-xs text-zinc-500">Chimney</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        <!-- Reviews... -->
+                        <div class="testimonial-card-wrapper"><div class="bg-slate-50 p-8 rounded-[2rem] shadow-sm relative h-full flex flex-col justify-between border border-slate-100"><div><span class="material-icons-round text-4xl text-slate-200 absolute top-6 right-6">format_quote</span><div class="flex items-center gap-1 text-yellow-500 mb-4"><span class="material-icons-round text-sm">star</span><span class="material-icons-round text-sm">star</span><span class="material-icons-round text-sm">star</span><span class="material-icons-round text-sm">star</span><span class="material-icons-round text-sm">star</span></div><p class="text-slate-700 font-medium mb-6 text-sm leading-relaxed">"Service bohot badhiya tha! Technician time pe aaya aur AC cool kar diya. Pricing bhi transparent thi."</p></div><div class="flex items-center gap-3 mt-auto"><div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-700">RK</div><div><p class="font-bold text-sm text-slate-900">Rahul Kumar</p><p class="text-xs text-slate-500">AC Repair</p></div></div></div></div>
+                        <div class="testimonial-card-wrapper"><div class="bg-slate-50 p-8 rounded-[2rem] shadow-sm relative h-full flex flex-col justify-between border border-slate-100"><div><span class="material-icons-round text-4xl text-slate-200 absolute top-6 right-6">format_quote</span><div class="flex items-center gap-1 text-yellow-500 mb-4"><span class="material-icons-round text-sm">star</span><span class="material-icons-round text-sm">star</span><span class="material-icons-round text-sm">star</span><span class="material-icons-round text-sm">star</span><span class="material-icons-round text-sm">star</span></div><p class="text-slate-700 font-medium mb-6 text-sm leading-relaxed">"Meri washing machine bilkul kaam nahi kar rahi thi. JUST REPAIR team ne same day fix kar diya."</p></div><div class="flex items-center gap-3 mt-auto"><div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-700">PS</div><div><p class="font-bold text-sm text-slate-900">Priya Sharma</p><p class="text-xs text-slate-500">Washing Machine</p></div></div></div></div>
+                        <div class="testimonial-card-wrapper"><div class="bg-slate-50 p-8 rounded-[2rem] shadow-sm relative h-full flex flex-col justify-between border border-slate-100"><div><span class="material-icons-round text-4xl text-slate-200 absolute top-6 right-6">format_quote</span><div class="flex items-center gap-1 text-yellow-500 mb-4"><span class="material-icons-round text-sm">star</span><span class="material-icons-round text-sm">star</span><span class="material-icons-round text-sm">star</span><span class="material-icons-round text-sm">star</span><span class="material-icons-round text-sm">star</span></div><p class="text-slate-700 font-medium mb-6 text-sm leading-relaxed">"Fridge cooling issue tha. Technician ne professionally handle kiya. Behavior was very polite."</p></div><div class="flex items-center gap-3 mt-auto"><div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-700">AS</div><div><p class="font-bold text-sm text-slate-900">Amit Singh</p><p class="text-xs text-slate-500">Refrigerator</p></div></div></div></div>
+                        <div class="testimonial-card-wrapper"><div class="bg-slate-50 p-8 rounded-[2rem] shadow-sm relative h-full flex flex-col justify-between border border-slate-100"><div><span class="material-icons-round text-4xl text-slate-200 absolute top-6 right-6">format_quote</span><div class="flex items-center gap-1 text-yellow-500 mb-4"><span class="material-icons-round text-sm">star</span><span class="material-icons-round text-sm">star</span><span class="material-icons-round text-sm">star</span><span class="material-icons-round text-sm">star</span><span class="material-icons-round text-sm">star</span></div><p class="text-slate-700 font-medium mb-6 text-sm leading-relaxed">"Microwave theek karna tha aur same day service mili. Technician bahut professional the."</p></div><div class="flex items-center gap-3 mt-auto"><div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-700">NK</div><div><p class="font-bold text-sm text-slate-900">Neha Kapoor</p><p class="text-xs text-slate-500">Microwave</p></div></div></div></div>
                     </div>
                 </div>
                 
-                <!-- Navigation Controls -->
                 <div class="carousel-controls">
                     <button id="prevBtn" class="carousel-btn" onclick="moveCarousel(-1)">❮</button>
                     <button id="nextBtn" class="carousel-btn" onclick="moveCarousel(1)">❯</button>
                 </div>
-
-                <script>
-                    let currentIndex = 0;
-                    const carousel = document.getElementById('carouselInner');
-                    const cards = document.querySelectorAll('.testimonial-card-wrapper');
-                    const totalCards = cards.length;
-                    
-                    // Determine how many cards are visible based on screen width
-                    function getCardsPerView() {
-                        return window.innerWidth >= 768 ? 3 : 1;
-                    }
-
-                    // Calculate max index allowed
-                    function getMaxIndex() {
-                        return totalCards - getCardsPerView();
-                    }
-                    
-                    function moveCarousel(direction) {
-                        const cardsPerView = getCardsPerView();
-                        const maxIndex = getMaxIndex();
-
-                        currentIndex += direction;
-                        
-                        // Bounds Check
-                        if (currentIndex < 0) currentIndex = 0;
-                        if (currentIndex > maxIndex) currentIndex = maxIndex;
-                        
-                        updateCarousel();
-                    }
-
-                    function updateCarousel() {
-                        const cardsPerView = getCardsPerView();
-                        const maxIndex = getMaxIndex();
-                        
-                        // Ensure current index is valid after a resize
-                        if (currentIndex > maxIndex) {
-                            currentIndex = maxIndex;
-                        }
-
-                        // Percentage to move: (100 / cardsPerView) * currentIndex
-                        const percentage = (100 / cardsPerView) * currentIndex;
-                        carousel.style.transform = `translateX(-${percentage}%)`;
-                        
-                        // Update button states
-                        document.getElementById('prevBtn').disabled = currentIndex === 0;
-                        document.getElementById('nextBtn').disabled = currentIndex === maxIndex;
-                    }
-
-                    // Handle Window Resize to reset/adjust view
-                    window.addEventListener('resize', () => {
-                         updateCarousel();
-                    });
-
-                    // Initialize
-                    updateCarousel();
-                </script>
             </div>
         </div>
+        
+        <script>
+            let currentIndex = 0;
+            const carousel = document.getElementById('carouselInner');
+            const cards = document.querySelectorAll('.testimonial-card-wrapper');
+            const totalCards = cards.length;
+            function getCardsPerView() { return window.innerWidth >= 768 ? 3 : 1; }
+            function getMaxIndex() { return totalCards - getCardsPerView(); }
+            function moveCarousel(direction) {
+                const maxIndex = getMaxIndex();
+                currentIndex += direction;
+                if (currentIndex < 0) currentIndex = 0;
+                if (currentIndex > maxIndex) currentIndex = maxIndex;
+                updateCarousel();
+            }
+            function updateCarousel() {
+                const cardsPerView = getCardsPerView();
+                const maxIndex = getMaxIndex();
+                if (currentIndex > maxIndex) currentIndex = maxIndex;
+                const percentage = (100 / cardsPerView) * currentIndex;
+                carousel.style.transform = `translateX(-${percentage}%)`;
+                document.getElementById('prevBtn').disabled = currentIndex === 0;
+                document.getElementById('nextBtn').disabled = currentIndex === maxIndex;
+            }
+            window.addEventListener('resize', updateCarousel);
+            updateCarousel();
+        </script>
     </section>
 
-    <!-- FAQ Section (8 Points, 2 Columns) -->
-    <section id="faq" class="py-24 px-4 bg-white">
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 px-4 bg-slate-50">
         <div class="max-w-6xl mx-auto">
-             <h2 class="text-3xl font-display font-bold text-center mb-12">Frequently Asked Questions</h2>
-             
+             <h2 class="text-3xl font-display font-bold text-center mb-12 text-slate-900">Frequently Asked Questions</h2>
              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                 <!-- Column 1 -->
                  <div class="space-y-4">
-                     <details class="group bg-zinc-50 rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-black/5">
-                        <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-black">
-                          <h3 class="font-bold">Is there a visiting charge?</h3>
-                          <span class="material-icons-round text-zinc-400 group-open:rotate-180 transition-transform">expand_more</span>
-                        </summary>
-                        <p class="mt-4 text-zinc-600 text-sm">Yes, a nominal visiting charge applies for inspection. However, this is adjusted if you avail the service.</p>
-                     </details>
-
-                     <details class="group bg-zinc-50 rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-black/5">
-                        <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-black">
-                          <h3 class="font-bold">Do you provide warranty?</h3>
-                          <span class="material-icons-round text-zinc-400 group-open:rotate-180 transition-transform">expand_more</span>
-                        </summary>
-                        <p class="mt-4 text-zinc-600 text-sm">Yes, we offer a 90-day warranty on service and manufacturer warranty on spare parts replaced.</p>
-                     </details>
-
-                     <details class="group bg-zinc-50 rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-black/5">
-                        <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-black">
-                          <h3 class="font-bold">Are your technicians vaccinated?</h3>
-                          <span class="material-icons-round text-zinc-400 group-open:rotate-180 transition-transform">expand_more</span>
-                        </summary>
-                        <p class="mt-4 text-zinc-600 text-sm">Safety is priority. All our technicians are fully vaccinated and follow strict hygiene protocols.</p>
-                     </details>
-
-                     <details class="group bg-zinc-50 rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-black/5">
-                        <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-black">
-                          <h3 class="font-bold">Do you repair old models?</h3>
-                          <span class="material-icons-round text-zinc-400 group-open:rotate-180 transition-transform">expand_more</span>
-                        </summary>
-                        <p class="mt-4 text-zinc-600 text-sm">Yes, we service appliances of all major brands, including older models, subject to parts availability.</p>
-                     </details>
+                     <details class="group bg-white rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-slate-200 border border-slate-100 shadow-sm"><summary class="flex cursor-pointer items-center justify-between gap-1.5 text-slate-900"><h3 class="font-bold">Is there a visiting charge?</h3><span class="material-icons-round text-slate-400 group-open:rotate-180 transition-transform">expand_more</span></summary><p class="mt-4 text-slate-600 text-sm">Yes, a nominal visiting charge applies for inspection. However, this is adjusted if you avail the service.</p></details>
+                     <details class="group bg-white rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-slate-200 border border-slate-100 shadow-sm"><summary class="flex cursor-pointer items-center justify-between gap-1.5 text-slate-900"><h3 class="font-bold">Do you provide warranty?</h3><span class="material-icons-round text-slate-400 group-open:rotate-180 transition-transform">expand_more</span></summary><p class="mt-4 text-slate-600 text-sm">Yes, we offer a 90-day warranty on service and manufacturer warranty on spare parts replaced.</p></details>
+                     <details class="group bg-white rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-slate-200 border border-slate-100 shadow-sm"><summary class="flex cursor-pointer items-center justify-between gap-1.5 text-slate-900"><h3 class="font-bold">Are your technicians vaccinated?</h3><span class="material-icons-round text-slate-400 group-open:rotate-180 transition-transform">expand_more</span></summary><p class="mt-4 text-slate-600 text-sm">Safety is priority. All our technicians are fully vaccinated and follow strict hygiene protocols.</p></details>
                  </div>
-
-                 <!-- Column 2 -->
                  <div class="space-y-4">
-                     <details class="group bg-zinc-50 rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-black/5">
-                        <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-black">
-                          <h3 class="font-bold">What is the turnaround time?</h3>
-                          <span class="material-icons-round text-zinc-400 group-open:rotate-180 transition-transform">expand_more</span>
-                        </summary>
-                        <p class="mt-4 text-zinc-600 text-sm">Most repairs are completed within 90 minutes of the technician's arrival. Complex issues may take 24 hours.</p>
-                     </details>
-
-                     <details class="group bg-zinc-50 rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-black/5">
-                        <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-black">
-                          <h3 class="font-bold">Do you serve on Sundays?</h3>
-                          <span class="material-icons-round text-zinc-400 group-open:rotate-180 transition-transform">expand_more</span>
-                        </summary>
-                        <p class="mt-4 text-zinc-600 text-sm">Yes, we work 7 days a week from 9 AM to 9 PM to suit your convenience.</p>
-                     </details>
-
-                     <details class="group bg-zinc-50 rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-black/5">
-                        <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-black">
-                          <h3 class="font-bold">What modes of payment do you accept?</h3>
-                          <span class="material-icons-round text-zinc-400 group-open:rotate-180 transition-transform">expand_more</span>
-                        </summary>
-                        <p class="mt-4 text-zinc-600 text-sm">We accept Cash, UPI (GPay/PhonePe), Credit/Debit Cards, and Net Banking.</p>
-                     </details>
-
-                     <details class="group bg-zinc-50 rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-black/5">
-                        <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-black">
-                          <h3 class="font-bold">How do I book a service?</h3>
-                          <span class="material-icons-round text-zinc-400 group-open:rotate-180 transition-transform">expand_more</span>
-                        </summary>
-                        <p class="mt-4 text-zinc-600 text-sm">You can book directly through our website form above or call our helpline number.</p>
-                     </details>
+                     <details class="group bg-white rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-slate-200 border border-slate-100 shadow-sm"><summary class="flex cursor-pointer items-center justify-between gap-1.5 text-slate-900"><h3 class="font-bold">What is the turnaround time?</h3><span class="material-icons-round text-slate-400 group-open:rotate-180 transition-transform">expand_more</span></summary><p class="mt-4 text-slate-600 text-sm">Most repairs are completed within 90 minutes of the technician's arrival.</p></details>
+                     <details class="group bg-white rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-slate-200 border border-slate-100 shadow-sm"><summary class="flex cursor-pointer items-center justify-between gap-1.5 text-slate-900"><h3 class="font-bold">Do you serve on Sundays?</h3><span class="material-icons-round text-slate-400 group-open:rotate-180 transition-transform">expand_more</span></summary><p class="mt-4 text-slate-600 text-sm">Yes, we work 7 days a week from 9 AM to 9 PM to suit your convenience.</p></details>
+                     <details class="group bg-white rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden open:ring-1 open:ring-slate-200 border border-slate-100 shadow-sm"><summary class="flex cursor-pointer items-center justify-between gap-1.5 text-slate-900"><h3 class="font-bold">How do I book a service?</h3><span class="material-icons-round text-slate-400 group-open:rotate-180 transition-transform">expand_more</span></summary><p class="mt-4 text-slate-600 text-sm">You can book directly through our website form above or call our helpline number.</p></details>
                  </div>
              </div>
         </div>
     </section>
 
-    <!-- Booking Section (New) -->
-    <section id="book" class="py-24 px-4 bg-zinc-900 text-white relative overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-        <div class="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+    <!-- Emergency Banner (Fixed Z-Index and Separation) -->
+    <div class="bg-red-600 text-white py-6 px-6 relative z-20 shadow-xl">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center shrink-0 animate-pulse">
+                    <span class="material-icons-round text-2xl">warning</span>
+                </div>
+                <div>
+                    <p class="font-bold text-lg leading-tight">Need Urgent Repair?</p>
+                    <p class="text-red-100 text-sm">Emergency breakdown service within 60 mins. <span class="font-bold bg-white/20 px-2 py-0.5 rounded text-white ml-1">NO EXTRA CHARGE</span></p>
+                </div>
+            </div>
+            <a href="tel:+917014883773" class="bg-white text-red-600 px-8 py-3 rounded-full font-bold hover:bg-red-50 transition-colors shadow-sm flex items-center gap-2">
+                <span class="material-icons-round">call</span> Call Emergency Line
+            </a>
+        </div>
+    </div>
+
+    <!-- Booking Section (Adjusted Background Blobs to prevent bleeding) -->
+    <section id="book" class="py-24 px-4 bg-gradient-to-br from-blue-700 to-blue-900 text-white relative overflow-hidden z-10">
+        <!-- Moved decorative elements down (top-0 -> top-20) to stop bleeding into the section above -->
+        <div class="absolute top-20 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
         <div class="max-w-4xl mx-auto relative z-10">
             <div class="text-center mb-12">
-                <span class="text-accent font-bold tracking-widest uppercase text-xs mb-2 block">Quick Action</span>
+                <span class="text-blue-200 font-bold tracking-widest uppercase text-xs mb-2 block">Quick Action</span>
                 <h2 class="text-4xl font-display font-bold">Book a Repair Now</h2>
-                <p class="text-zinc-400 mt-4 max-w-xl mx-auto">Fill the form below or call us directly. Our expert will reach you within 90 minutes.</p>
+                <p class="text-blue-100 mt-4 max-w-xl mx-auto">Fill the form below or call us directly. Our expert will reach you within 90 minutes.</p>
             </div>
 
-            <div class="bg-white/5 backdrop-blur-lg border border-white/10 p-8 rounded-3xl">
-                <!-- CHANGED: Added ID to form for JS selection -->
+            <!-- White Form Container for Pop-out Effect -->
+            <div class="bg-white text-slate-900 shadow-2xl p-8 rounded-3xl border border-white/10">
                 <form id="booking-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-xs font-bold text-zinc-400 uppercase mb-2">Name</label>
-                        <!-- CHANGED: Added ID to inputs -->
-                        <input id="name" type="text" placeholder="John Doe" required class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-accent outline-none">
+                        <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Name</label>
+                        <input id="name" type="text" placeholder="John Doe" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:ring-2 focus:ring-blue-600 outline-none">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-zinc-400 uppercase mb-2">Phone Number</label>
-                        <input id="phone" type="tel" placeholder="+91 70148-83773" required class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-accent outline-none">
+                        <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Phone Number</label>
+                        <input id="phone" type="tel" placeholder="+91 70148-83773" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:ring-2 focus:ring-blue-600 outline-none">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-zinc-400 uppercase mb-2">Service Type</label>
-                        <select id="service" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-accent outline-none appearance-none">
-                            <option class="bg-zinc-900">AC Repair</option>
-                            <option class="bg-zinc-900">Refrigerator</option>
-                            <option class="bg-zinc-900">Washing Machine</option>
-                            <option class="bg-zinc-900">Microwave</option>
-                            <option class="bg-zinc-900">Geyser</option>
-                            <option class="bg-zinc-900">RO Purifier</option>
-                            <option class="bg-zinc-900">Chimney</option>
+                        <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Service Type</label>
+                        <select id="service" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:ring-2 focus:ring-blue-600 outline-none appearance-none">
+                            <option class="bg-white">AC Repair</option>
+                            <option class="bg-white">Refrigerator</option>
+                            <option class="bg-white">Washing Machine</option>
+                            <option class="bg-white">Microwave</option>
+                            <option class="bg-white">Geyser</option>
+                            <option class="bg-white">Water Cooler</option>
+                            <option class="bg-white">Deep Fridge</option>
+                            <option class="bg-white">Sweet Counter</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-zinc-400 uppercase mb-2">City/Area</label>
-                        <input id="city" type="text" placeholder="e.g. Vaishali Nagar, Jaipur" required class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-accent outline-none">
+                        <label class="block text-xs font-bold text-slate-500 uppercase mb-2">City/Area</label>
+                        <input id="city" type="text" placeholder="e.g. Vaishali Nagar, Jaipur" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:ring-2 focus:ring-blue-600 outline-none">
                     </div>
                     <div class="md:col-span-2">
-                        <button type="submit" class="w-full bg-white text-black font-bold py-4 rounded-xl hover:bg-zinc-200 transition-colors flex items-center justify-center gap-2">
+                        <button type="submit" class="w-full bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-slate-800 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20">
                             Confirm Booking <span class="material-icons-round text-sm">check_circle</span>
                         </button>
                     </div>
                 </form>
                 <div class="mt-6 text-center">
-                    <p class="text-zinc-500 text-sm">Or call us directly at <a href="tel:+917014883773" class="text-white font-bold hover:underline">+91 70148-83773</a></p>
+                    <p class="text-slate-500 text-sm">Or call us directly at <a href="tel:+917014883773" class="text-slate-900 font-bold hover:underline">+91 70148-83773</a></p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black text-white pt-24 pb-10 border-t border-zinc-900">
+    <footer class="bg-slate-950 text-white pt-24 pb-10 border-t border-slate-900">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
                 <div class="col-span-1 md:col-span-1">
                     <div class="flex items-center gap-3 mb-6">
-                        <!-- Custom SVG in Footer (White) -->
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8 text-white" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8 text-blue-500" viewBox="0 0 16 16">
                             <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0Zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11Z"/>
                         </svg>
                         <span class="text-2xl font-display font-bold">JUST REPAIR</span>
                     </div>
-                    <!-- CHANGED: Lighter text color -->
-                    <p class="text-zinc-400 text-sm mb-8 leading-relaxed">Jaipur's leading appliance care experts. Delivering quality repairs with speed, transparency, and a commitment to customer satisfaction.</p>
+                    <p class="text-slate-400 text-sm mb-8 leading-relaxed">Jaipur's leading appliance care experts. Delivering quality repairs with speed, transparency, and a commitment to customer satisfaction.</p>
                 </div>
                 
                 <div>
                     <h4 class="font-bold mb-6 text-white text-lg">Quick Links</h4>
-                    <!-- CHANGED: Lighter text color & Smooth transitions -->
-                    <ul class="space-y-4 text-sm text-zinc-400">
-                        <li><a href="#services" class="hover:text-white transition-colors duration-300">Services</a></li>
-                        <li><a href="#process" class="hover:text-white transition-colors duration-300">How it Works</a></li>
-                        <li><a href="#reviews" class="hover:text-white transition-colors duration-300">Reviews</a></li>
-                        <li><a href="#book" class="hover:text-white transition-colors duration-300">Book Now</a></li>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="#services" class="hover:text-blue-400 transition-colors duration-300">Services</a></li>
+                        <li><a href="#pricing" class="hover:text-blue-400 transition-colors duration-300">Pricing</a></li>
+                        <li><a href="#process" class="hover:text-blue-400 transition-colors duration-300">How it Works</a></li>
+                        <li><a href="#reviews" class="hover:text-blue-400 transition-colors duration-300">Reviews</a></li>
+                        <li><a href="#book" class="hover:text-blue-400 transition-colors duration-300">Book Now</a></li>
                     </ul>
                 </div>
 
-                <!-- ADDED: Services Menu instead of Social Media/Newsletter -->
                 <div>
                     <h4 class="font-bold mb-6 text-white text-lg">Our Services</h4>
-                    <ul class="space-y-4 text-sm text-zinc-400">
-                        <li><a href="#book" class="hover:text-white transition-colors duration-300">AC Repair</a></li>
-                        <li><a href="#book" class="hover:text-white transition-colors duration-300">Refrigerator Repair</a></li>
-                        <li><a href="#book" class="hover:text-white transition-colors duration-300">Washing Machine</a></li>
-                        <li><a href="#book" class="hover:text-white transition-colors duration-300">Microwave Oven</a></li>
-                        <li><a href="#book" class="hover:text-white transition-colors duration-300">Geyser Service</a></li>
-                        <li><a href="#book" class="hover:text-white transition-colors duration-300">RO Purifier</a></li>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="#book" class="hover:text-blue-400 transition-colors duration-300">AC Repair</a></li>
+                        <li><a href="#book" class="hover:text-blue-400 transition-colors duration-300">Refrigerator Repair</a></li>
+                        <li><a href="#book" class="hover:text-blue-400 transition-colors duration-300">Washing Machine</a></li>
+                        <li><a href="#book" class="hover:text-blue-400 transition-colors duration-300">Microwave Oven</a></li>
+                        <li><a href="#book" class="hover:text-blue-400 transition-colors duration-300">Geyser Service</a></li>
+                         <li><a href="#book" class="hover:text-blue-400 transition-colors duration-300">Deep Fridge</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="font-bold mb-6 text-white text-lg">Contact</h4>
-                    <!-- CHANGED: Lighter text color -->
-                    <ul class="space-y-4 text-sm text-zinc-400">
+                    <ul class="space-y-4 text-sm text-slate-400">
                         <li class="flex items-start gap-3">
                             <span class="material-icons-round text-base mt-0.5">location_on</span>
                             <span>Plot No. 90, Shivaji Nagar, Boring Road, Golden Bakery Chauraha, Jhotwara, Jaipur, India</span>
@@ -1122,17 +1035,23 @@
                         </li>
                         <li class="flex items-center gap-3">
                             <span class="material-icons-round text-base">email</span>
-                            <span>support@eliteappliance.in</span>
+                            <span>support@justrepair.in</span>
                         </li>
                     </ul>
+                    <!-- Map Placeholder -->
+                    <div class="mt-6 rounded-xl overflow-hidden h-32 w-full bg-slate-800 relative group">
+                        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=400" alt="Map Location" class="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity">
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <span class="bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold border border-white/20">View on Map</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-zinc-500">
+            <div class="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
                 <p>&copy; 2026 JUST REPAIR. All rights reserved.</p>
+                <p class="mt-2 md:mt-0 text-slate-600">Disclaimer: JUST REPAIR is an independent service provider. We are not authorized service center for any brand. All brand names used for descriptive purposes only.</p>
                 <div class="flex gap-6 mt-4 md:mt-0">
-                    <!-- REMOVED: Online Status -->
-                    <!-- CHANGED: Modal triggers with smooth transition -->
                     <button onclick="openModal('terms')" class="hover:text-white transition-colors duration-300">Terms</button>
                     <button onclick="openModal('privacy')" class="hover:text-white transition-colors duration-300">Privacy</button>
                 </div>
@@ -1141,7 +1060,7 @@
     </footer>
 
     <!-- Floating Action Buttons -->
-    <a href="tel:+917014883773" class="fixed bottom-6 left-6 z-50 bg-accent text-white w-14 h-14 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 flex items-center justify-center animate-ripple-blue">
+    <a href="tel:+917014883773" class="fixed bottom-6 left-6 z-50 bg-blue-600 text-white w-14 h-14 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 flex items-center justify-center animate-ripple-blue">
         <span class="material-icons-round text-2xl">call</span>
     </a>
 
@@ -1150,47 +1069,41 @@
     </a> 
 
     <!-- Modals -->
-    <!-- Terms Modal -->
-    <div id="terms-modal" class="modal fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div id="terms-modal" class="modal fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
         <div class="bg-white w-full max-w-2xl rounded-2xl max-h-[80vh] overflow-y-auto relative">
-            <button onclick="closeModal('terms')" class="absolute top-4 right-4 p-2 bg-zinc-100 rounded-full hover:bg-zinc-200">
-                <span class="material-icons-round">close</span>
+            <button onclick="closeModal('terms')" class="absolute top-4 right-4 p-2 bg-slate-100 rounded-full hover:bg-slate-200">
+                <span class="material-icons-round text-slate-900">close</span>
             </button>
             <div class="p-8">
-                <h3 class="text-2xl font-bold mb-6">Terms & Conditions</h3>
-                <div class="prose prose-sm text-zinc-600">
+                <h3 class="text-2xl font-bold mb-6 text-slate-900">Terms & Conditions</h3>
+                <div class="prose prose-sm text-slate-600">
                     <p>Welcome to JUST REPAIR. By using our services, you agree to the following terms:</p>
-                    <h4 class="text-black font-bold mt-4">1. Service Booking</h4>
+                    <h4 class="text-slate-900 font-bold mt-4">1. Service Booking</h4>
                     <p>All bookings are subject to technician availability. We strive to reach you within the promised time slot.</p>
-                    <h4 class="text-black font-bold mt-4">2. Pricing & Payment</h4>
+                    <h4 class="text-slate-900 font-bold mt-4">2. Pricing & Payment</h4>
                     <p>Prices mentioned are estimates. Final pricing depends on the inspection. Payment must be made upon service completion.</p>
-                    <h4 class="text-black font-bold mt-4">3. Warranty</h4>
+                    <h4 class="text-slate-900 font-bold mt-4">3. Warranty</h4>
                     <p>We provide a service warranty on repairs done. This warranty does not cover physical damage or misuse.</p>
-                    <h4 class="text-black font-bold mt-4">4. Liability</h4>
+                    <h4 class="text-slate-900 font-bold mt-4">4. Liability</h4>
                     <p>JUST REPAIR is not liable for pre-existing damages to appliances. We ensure extreme care during service.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Privacy Modal -->
-    <div id="privacy-modal" class="modal fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div id="privacy-modal" class="modal fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
         <div class="bg-white w-full max-w-2xl rounded-2xl max-h-[80vh] overflow-y-auto relative">
-            <button onclick="closeModal('privacy')" class="absolute top-4 right-4 p-2 bg-zinc-100 rounded-full hover:bg-zinc-200">
-                <span class="material-icons-round">close</span>
+            <button onclick="closeModal('privacy')" class="absolute top-4 right-4 p-2 bg-slate-100 rounded-full hover:bg-slate-200">
+                <span class="material-icons-round text-slate-900">close</span>
             </button>
             <div class="p-8">
-                <h3 class="text-2xl font-bold mb-6">Privacy Policy</h3>
-                <div class="prose prose-sm text-zinc-600">
+                <h3 class="text-2xl font-bold mb-6 text-slate-900">Privacy Policy</h3>
+                <div class="prose prose-sm text-slate-600">
                     <p>Your privacy is important to us. This policy explains how we handle your data:</p>
-                    <h4 class="text-black font-bold mt-4">1. Information Collection</h4>
+                    <h4 class="text-slate-900 font-bold mt-4">1. Information Collection</h4>
                     <p>We collect your name, phone number, and address solely for the purpose of providing repair services.</p>
-                    <h4 class="text-black font-bold mt-4">2. Data Usage</h4>
+                    <h4 class="text-slate-900 font-bold mt-4">2. Data Usage</h4>
                     <p>Your data is used to schedule appointments, process payments, and improve our service quality.</p>
-                    <h4 class="text-black font-bold mt-4">3. Data Sharing</h4>
-                    <p>We do not sell or share your personal information with third parties for marketing purposes.</p>
-                    <h4 class="text-black font-bold mt-4">4. Security</h4>
-                    <p>We implement security measures to protect your personal information from unauthorized access.</p>
                 </div>
             </div>
         </div>
@@ -1198,159 +1111,97 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Counter Animation Logic
             const counterSection = document.getElementById('fun-facts');
             const counters = document.querySelectorAll('.counter');
-            
             if (counterSection && counters.length > 0) {
-                const observerOptions = {
-                    root: null,
-                    threshold: 0.5 // Trigger when 50% of the section is visible
-                };
-
+                const observerOptions = { root: null, threshold: 0.5 };
                 const observer = new IntersectionObserver((entries, observer) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            
                             counters.forEach(counter => {
                                 const target = +counter.getAttribute('data-target');
-                                const duration = 2000; // Animation duration in ms
-                                const frameDuration = 20; // 50fps
+                                const duration = 2000; 
+                                const frameDuration = 20; 
                                 const totalFrames = duration / frameDuration;
                                 const increment = target / totalFrames;
-                                
                                 let currentCount = 0;
-
                                 const updateCount = () => {
                                     currentCount += increment;
-                                    
                                     if (currentCount < target) {
-                                        // Format based on whether target is an integer or float
-                                        if (Number.isInteger(target)) {
-                                            counter.innerText = Math.ceil(currentCount);
-                                        } else {
-                                            counter.innerText = currentCount.toFixed(1);
-                                        }
+                                        if (Number.isInteger(target)) { counter.innerText = Math.ceil(currentCount); } 
+                                        else { counter.innerText = currentCount.toFixed(1); }
                                         setTimeout(updateCount, frameDuration);
-                                    } else {
-                                        counter.innerText = target;
-                                    }
+                                    } else { counter.innerText = target; }
                                 };
                                 updateCount();
                             });
-                            
-                            // Stop observing after animation starts
                             observer.unobserve(entry.target);
                         }
                     });
                 }, observerOptions);
-
                 observer.observe(counterSection);
             }
 
-            // Mobile Menu Logic
             const btn = document.getElementById('mobile-menu-button');
             const menu = document.getElementById('mobile-menu');
             const iconOpen = document.getElementById('icon-open');
             const iconClose = document.getElementById('icon-close');
-
             if (btn && menu && iconOpen && iconClose) {
                 btn.addEventListener('click', function(e) {
-                    e.stopPropagation(); // Prevent bubbling issues
-                    
-                    // Check if menu is currently OPEN (not hidden, but visually open)
-                    // We check if opacity-0 class is NOT present to know it is open
+                    e.stopPropagation(); 
                     const isClosed = menu.classList.contains('opacity-0');
-                    
                     if (isClosed) {
-                        // Open Menu
                         menu.classList.remove('opacity-0', 'invisible', '-translate-y-4', 'pointer-events-none');
-                        // Rotate hamburger to 90deg and fade out
                         iconOpen.classList.add('rotate-90', 'scale-0', 'opacity-0');
-                        // Rotate close icon to 0deg and fade in
                         iconClose.classList.remove('rotate-90', 'scale-0', 'opacity-0');
-                        
                         btn.setAttribute('aria-expanded', 'true');
                     } else {
-                        // Close Menu
                         menu.classList.add('opacity-0', 'invisible', '-translate-y-4', 'pointer-events-none');
-                        
-                        // Reset icons
                         iconOpen.classList.remove('rotate-90', 'scale-0', 'opacity-0');
                         iconClose.classList.add('rotate-90', 'scale-0', 'opacity-0');
-                        
                         btn.setAttribute('aria-expanded', 'false');
                     }
                 });
-
-                // Helper to force close menu
                 const closeMenu = () => {
                     menu.classList.add('opacity-0', 'invisible', '-translate-y-4', 'pointer-events-none');
                     iconOpen.classList.remove('rotate-90', 'scale-0', 'opacity-0');
                     iconClose.classList.add('rotate-90', 'scale-0', 'opacity-0');
                     btn.setAttribute('aria-expanded', 'false');
                 };
-
-                // Close when clicking links
                 const links = menu.querySelectorAll('a');
-                links.forEach(link => {
-                    link.addEventListener('click', closeMenu);
-                });
-
-                // Close when clicking outside
+                links.forEach(link => { link.addEventListener('click', closeMenu); });
                 document.addEventListener('click', function(event) {
                     const isClosed = menu.classList.contains('opacity-0');
-                    if (!isClosed && !menu.contains(event.target) && !btn.contains(event.target)) {
-                        closeMenu();
-                    }
+                    if (!isClosed && !menu.contains(event.target) && !btn.contains(event.target)) { closeMenu(); }
                 });
             }
 
-            // WhatsApp Booking Logic
             const form = document.getElementById('booking-form');
             if(form) {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    
                     const name = document.getElementById('name').value;
                     const phone = document.getElementById('phone').value;
                     const service = document.getElementById('service').value;
                     const city = document.getElementById('city').value;
-                    
-                    // Construct Message
                     const message = `Hello Just Repair, I would like to book a service.%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Service:* ${service}%0A*Location:* ${city}`;
-                    
-                    // WhatsApp URL (using the number from contact section)
                     const whatsappUrl = `https://wa.me/917014883773?text=${message}`;
-                    
-                    // Open in new tab
                     window.open(whatsappUrl, '_blank');
                 });
             }
         });
 
-        // Modal Logic
         function openModal(type) {
             const modal = document.getElementById(type + '-modal');
-            if(modal) {
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            }
+            if(modal) { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
         }
-
         function closeModal(type) {
             const modal = document.getElementById(type + '-modal');
-            if(modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
+            if(modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
         }
-
-        // Close modal on outside click
         window.addEventListener('click', function(event) {
             const target = event.target;
             if (target && target.classList && target.classList.contains('modal')) {
-                // Hide the modal overlay and re-enable scrolling
                 target.classList.remove('active');
                 document.body.style.overflow = '';
             }
